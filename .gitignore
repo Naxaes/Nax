@@ -1,3 +1,12 @@
+# CMake
+cmake-debug-build/
+
+# Mac OS
+.DS_Store
+
+# CLion
+.idea/
+
 # Prerequisites
 *.d
 
