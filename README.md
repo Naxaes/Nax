@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Naxaes/Nax.svg?branch=master)](https://travis-ci.org/Naxaes/Nax)
+
 # Nax
 Nax is a simple render engine. It probably stands for something amazingly clever, and is most likely not an abbreviation of my username.
 
