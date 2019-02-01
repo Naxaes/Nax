@@ -1,0 +1,2081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Assimp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libraries\;CMake Files\libraries\assimp-4.1.0\;CMake Files\libraries\assimp-4.1.0\include\;CMake Files\libraries\assimp-4.1.0\include\assimp\;CMake Files\libraries\assimp-4.1.0\cmake-modules\;CMake Files\libraries\assimp-4.1.0\contrib\;CMake Files\libraries\assimp-4.1.0\contrib\irrXML\;CMake Files\libraries\assimp-4.1.0\code\;CMake Files\libraries\assimp-4.1.0\tools\;CMake Files\libraries\assimp-4.1.0\tools\assimp_cmd\;CMake Files\libraries\assimp-4.1.0\test\;CMake Files\libraries\assimp-4.1.0\test\headercheck\;CMake Files\libraries\glfw-3.3.1\;CMake Files\libraries\glfw-3.3.1\CMake\;CMake Files\libraries\glfw-3.3.1\CMake\modules\;CMake Files\libraries\glfw-3.3.1\src\;CMake Files\libraries\glm\;CMake Files\libraries\glm\cmake\;CMake Files\libraries\glm\glm\;CMake Files\libraries\glm\test\;CMake Files\libraries\glm\test\bug\;CMake Files\libraries\glm\test\core\;CMake Files\libraries\glm\test\gtc\;CMake Files\libraries\glm\test\gtx\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IrrXML">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/lib/libIrrXMLd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 IrrXML"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IrrXML/fast">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/lib/libIrrXMLd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 IrrXML/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/lib/libassimpd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_BUILD_DLL_EXPORT"/>
+					<Add option="-DOPENDDLPARSER_BUILD"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/rapidjson/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/unzip"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/openddlparser/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/.."/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 assimp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp/fast">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/lib/libassimpd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_BUILD_DLL_EXPORT"/>
+					<Add option="-DOPENDDLPARSER_BUILD"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/rapidjson/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/unzip"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/../contrib/openddlparser/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/.."/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 assimp/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_cmd">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/bin/assimpd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 assimp_cmd"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_cmd/fast">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/bin/assimpd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 assimp_cmd/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/bin/unit" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_TEST_MODELS_DIR=&quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/models&quot;"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/../contrib/gtest/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/../contrib/gtest"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 unit"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit/fast">
+				<Option output="/Users/Kleinman/Documents/Programming/C:C++/Next/bin/unit" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_TEST_MODELS_DIR=&quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/models&quot;"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/."/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/../contrib/gtest/include"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/../contrib/gtest"/>
+					<Add directory="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 unit/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSConverter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3DSLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/3MFXmlTags.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ACLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ACLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter_Geometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter_Macro.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter_Material.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter_Node.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AMFImporter_Postprocess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ASELoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ASELoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ASEParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ASEParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssbinExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssbinExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssbinLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssbinLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Assimp.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssimpCExport.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssxmlExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/AssxmlExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/B3DImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/B3DImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BVHLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BVHLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BaseImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BaseImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BaseProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BaseProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Bitmap.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Bitmap.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderBMesh.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderBMesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderDNA.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderDNA.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderDNA.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderIntermediate.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderModifier.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderModifier.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderScene.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderScene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderSceneGen.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderTessellator.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlenderTessellator.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/BlobIOSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ByteSwapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CInterfaceIOWrapper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CInterfaceIOWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/COBLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/COBLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/COBScene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CSMLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CSMLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CalcTangentsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CalcTangentsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ColladaParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ComputeUVMappingProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ComputeUVMappingProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ConvertToLHProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ConvertToLHProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CreateAnimMesh.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CreateAnimMesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFOpcPackage.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/D3MFOpcPackage.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DXFHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DXFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DXFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DeboneProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DeboneProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DefaultIOStream.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DefaultIOSystem.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DefaultLogger.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/DefaultProgressHandler.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Exporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXBinaryTokenizer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXCompileConfig.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXConverter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXConverter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXDeformer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXDocument.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXDocument.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXDocumentUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXDocumentUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXImportSettings.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXMeshGeometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXMeshGeometry.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXModel.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXNodeAttribute.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXProperties.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXProperties.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXTokenizer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXTokenizer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FBXUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FIReader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FIReader.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FileLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindDegenerates.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindDegenerates.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindInstancesProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindInstancesProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindInvalidDataProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FindInvalidDataProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FixNormalsStep.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/FixNormalsStep.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/GenFaceNormalsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/GenFaceNormalsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/GenVertexNormalsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/GenVertexNormalsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/GenericProperty.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/HMPFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/HMPLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/HMPLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/HalfLifeFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Hash.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCBoolean.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCCurve.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCGeometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCOpenings.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCProfile.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCReaderGen.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCReaderGen1.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCReaderGen2.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFCUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IFF.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IOStreamBuffer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRMeshLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRMeshLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRShared.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/IRRShared.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Importer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Importer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ImporterRegistry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ImproveCacheLocality.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ImproveCacheLocality.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/JoinVerticesProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/JoinVerticesProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOAnimation.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOBLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWOMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWSLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LWSLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LimitBoneWeightsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LimitBoneWeightsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LineSplitter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/LogAux.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD2FileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD2Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD2Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD2NormalTable.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD3FileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD3Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD3Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD5Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD5Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD5Parser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MD5Parser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDCFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDCLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDCLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDCNormalTable.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDLDefaultColorMap.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDLFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MDLMaterialLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDCpp14.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDPmdParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDPmxParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDPmxParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MMDVmdParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MS3DLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MS3DLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MakeVerboseFormat.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MakeVerboseFormat.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MaterialSystem.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MaterialSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/MemoryIOWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/NDOLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/NDOLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/NFFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/NFFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OFFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OFFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileMtlImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileMtlImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ObjTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreBinarySerializer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreBinarySerializer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreParsingUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreStructs.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreStructs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreXmlSerializer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OgreXmlSerializer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OpenGEXExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OpenGEXExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OpenGEXImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OpenGEXImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OpenGEXStructs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OptimizeGraph.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OptimizeGraph.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OptimizeMeshes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/OptimizeMeshes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ParsingUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PlyParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PolyTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PostStepRegistry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PretransformVertices.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/PretransformVertices.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ProcessHelper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ProcessHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Profiler.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPZipArchive.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3BSPZipArchive.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3DLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Q3DLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RawLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RawLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveComments.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveComments.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveRedundantMaterials.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveRedundantMaterials.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveVCProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/RemoveVCProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SGSpatialSort.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SGSpatialSort.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SIBImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SIBImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SMDLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SMDLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STEPFile.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STEPFileEncoding.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STEPFileEncoding.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STEPFileReader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STEPFileReader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STLExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STLExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/STLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ScaleProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ScaleProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SceneCombiner.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ScenePreprocessor.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ScenePreprocessor.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ScenePrivate.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SkeletonMeshBuilder.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SkeletonMeshBuilder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SmoothingGroups.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SortByPTypeProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SortByPTypeProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SpatialSort.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SpatialSort.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SplitByBoneCountProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SplitByBoneCountProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SplitLargeMeshes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/SplitLargeMeshes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StandardShapes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StandardShapes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StdOStreamLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StepExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StepExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StreamReader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StreamWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StringComparison.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/StringUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Subdivision.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Subdivision.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TargetAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TargetAnimation.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TerragenLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TerragenLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TextureTransform.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TextureTransform.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TinyFormatter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TriangulateProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/TriangulateProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/UnrealLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/UnrealLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ValidateDataStructure.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/ValidateDataStructure.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Version.cpp">
+			<Option target="assimp"/>
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Vertex.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/VertexTriangleAdjacency.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/VertexTriangleAdjacency.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/Win32DebugLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DExporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Geometry2D.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Geometry3D.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Group.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Light.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Macro.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Metadata.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Networking.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Node.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Postprocess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Rendering.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Shape.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DImporter_Texturing.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/X3DVocabulary.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XGLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XGLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/XMLTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/fast_atof.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Asset.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Asset.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2AssetWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2AssetWriter.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Exporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Exporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Importer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTF2Importer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFAsset.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFAsset.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFAssetWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFAssetWriter.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/glTFImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/irrXMLWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/qnan.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/scene.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/clipper/clipper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/clipper/clipper.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/gtest/src/gtest-all.cc">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/CXMLReaderImpl.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/heapsort.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/irrArray.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/irrString.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/irrTypes.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/irrXML.cpp">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/irrXML.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/DDLNode.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/OpenDDLCommon.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/OpenDDLExport.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/OpenDDLParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/OpenDDLStream.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/code/Value.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/DDLNode.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/OpenDDLCommon.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/OpenDDLExport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/OpenDDLParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/OpenDDLParserUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/OpenDDLStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/openddlparser/include/openddlparser/Value.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/common/shapes.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/common/shapes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/common/utils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/advancing_front.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/advancing_front.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/cdt.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/cdt.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/sweep.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/sweep.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/sweep_context.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/poly2tri/poly2tri/sweep/sweep_context.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/unzip/crypt.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/unzip/ioapi.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/unzip/ioapi.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/unzip/unzip.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/unzip/unzip.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/zip/src/miniz.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/zip/src/zip.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/zip/src/zip.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Compiler/poppack1.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Compiler/pstdint.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Compiler/pushpack1.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/DefaultIOStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/DefaultIOSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/DefaultLogger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Defines.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Exporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/IOStream.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/IOSystem.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Importer.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/LogStream.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/Logger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/NullLogger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/ProgressHandler.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/SceneCombiner.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/ai_assert.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/anim.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/camera.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/cexport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/cfileio.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/cimport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/color4.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/color4.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/config.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/defs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/importerdesc.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/light.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/material.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/material.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/matrix3x3.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/matrix3x3.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/matrix4x4.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/matrix4x4.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/mesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/metadata.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/postprocess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/quaternion.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/quaternion.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/scene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/texture.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/types.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/vector2.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/vector2.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/vector3.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/vector3.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/version.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/AbstractImportExportBase.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/AbstractImportExportBase.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/AssimpAPITest.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/CCompilerTest.c">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/Main.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/SceneDiffer.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/SceneDiffer.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/TestIOSystem.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/TestModelFactory.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/UTLogStream.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/ut3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/ut3DSImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utACImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utAMFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utASEImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utAnim.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utB3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBVHImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBatchLoader.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBlendImportAreaLight.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBlendImportMaterials.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBlenderImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utBlenderIntermediate.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utCSMImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utColladaExportCamera.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utColladaExportLight.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utColladaImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utD3MFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utDXFImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utDefaultIOStream.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utFBXImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utFastAtof.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utFindDegenerates.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utFindInvalidData.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utFixInfacingNormals.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utGenNormals.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utHMPImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utIFCImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utIOStreamBuffer.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utIOSystem.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utImproveCacheLocality.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utIssues.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utJoinVertices.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utLWSImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utLimitBoneWeights.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utMaterialSystem.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utMatrix3x3.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utMatrix4x4.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utMetadata.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utObjImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utObjTools.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utOpenGEXImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utPLYImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utPMXImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utPretransformVertices.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utProfiler.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utQ3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utRemoveComments.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utRemoveComponent.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utRemoveRedundantMaterials.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utRemoveVCProcess.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSIBImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSMDImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSTLImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utScaleProcess.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSceneCombiner.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utScenePreprocessor.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSharedPPData.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSortByPType.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utSplitLargeMeshes.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utStringUtils.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utTargetAnimation.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utTextureTransform.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utTriangulate.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utTypes.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utVector3.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utVersion.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utVertexTriangleAdjacency.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utX3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utXImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utglTF2ImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/unit/utglTFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/CompareDump.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Export.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/ImageExtractor.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Info.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/Main.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/WriteDumb.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/assimp_cmd.rc">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/raw.h">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/resource.h">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/assimp-config-version.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/assimp-config.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/assimp.pc.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/revision.h.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/include/assimp/config.h.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\include\assimp\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/FindDevIL.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/FindDirectX.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/FindPkgMacros.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/FindRT.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/FindZLIB.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/PrecompiledHeader.cmake">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/cmake-modules/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\contrib\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/contrib/irrXML/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\contrib\irrXML\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/code/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\code\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/tools/assimp_cmd/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\tools\assimp_cmd\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\test\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/test/headercheck/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\assimp-4.1.0\test\headercheck\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/CMake/modules/FindVulkan.cmake">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\CMake\modules\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\src\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/src/glfw3.pc.in">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\src\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/src/glfw3Config.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\src\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glfw-3.3.1/src/glfw_config.h.in">
+			<Option virtualFolder="CMake Files\libraries\glfw-3.3.1\src\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/cmake/CMakePackageConfigHelpers.cmake">
+			<Option virtualFolder="CMake Files\libraries\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/cmake/GNUInstallDirs.cmake">
+			<Option virtualFolder="CMake Files\libraries\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/cmake/glm.pc.in">
+			<Option virtualFolder="CMake Files\libraries\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/cmake/glmBuildConfig.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/cmake/glmConfig.cmake.in">
+			<Option virtualFolder="CMake Files\libraries\glm\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/glm/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\glm\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\test\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/test/bug/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\test\bug\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/test/core/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\test\core\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/test/gtc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\test\gtc\"/>
+		</Unit>
+		<Unit filename="/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/glm/test/gtx/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libraries\glm\test\gtx\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
