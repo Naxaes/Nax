@@ -1,0 +1,20 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a4be7/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a4be7.dir/build.make CMakeFiles/cmTC_a4be7.dir/build
+CMakeFiles/cmTC_a4be7.dir/build.make:64: *** target pattern contains no `%'.  Stop.
+make: *** [cmTC_a4be7/fast] Error 2
+
+
+
+Detecting CXX [-std=c++1z] compiler features failed to compile with the following output:
+Change Dir: /Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6e9a2/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_6e9a2.dir/build.make CMakeFiles/cmTC_6e9a2.dir/build
+CMakeFiles/cmTC_6e9a2.dir/build.make:64: *** target pattern contains no `%'.  Stop.
+make: *** [cmTC_6e9a2/fast] Error 2
+
+
+
