@@ -1,5 +1,5 @@
 # CMake
-cmake-debug-build/
+cmake-build-debug/
 
 # Mac OS
 .DS_Store
