@@ -1,0 +1,15 @@
+dist: trusty
+sudo: false
+language: c++
+compiler: clang
+
+addons:
+  apt:
+    sources:
+      - llvm-toolchain-trusty-5.0
+    packages:
+      - clang-5.0
+
+script:
+  - cmake .
+  - cmake --build . -- -j2
