@@ -16,8 +16,17 @@ add_subdirectory(libraries/glfw-3.3.1)
 add_subdirectory(libraries/assimp-4.1.0)
 
 # IMGUI
-add_library(imgui libraries/imgui/imgui.cpp libraries/imgui/imgui_draw.cpp)
+add_library(
+    imgui
+    libraries/imgui/imgui.cpp
+    libraries/imgui/imgui_draw.cpp
+    libraries/imgui/implementation/imgui_impl_opengl3.cpp
+    libraries/imgui/implementation/imgui_impl_glfw.cpp
+)
+target_link_libraries(imgui glad)
+target_link_libraries(imgui glfw)
 target_include_directories(imgui PRIVATE libraries/imgui/)
+target_include_directories(imgui PRIVATE libraries/glad/include/)
 
 # GTEST
 add_subdirectory(libraries/googletest)
