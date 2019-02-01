@@ -1,5 +1,5 @@
 dist: trusty
-sudo: false
+sudo: true
 language: c++
 compiler: clang
 
@@ -9,6 +9,9 @@ addons:
       - llvm-toolchain-trusty-5.0
     packages:
       - clang-5.0
+
+install:
+  - sudo apt-get install xorg-dev libglu1-mesa-dev
 
 script:
   - CXX=/usr/bin/clang++-5.0 CC=/usr/bin/clang-5.0
