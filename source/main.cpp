@@ -10,6 +10,8 @@
 #include <gtest/gtest.h>
 #include <stb_image.h>
 
+#include "opengl.h"
+
 
 int main()
 {
@@ -60,8 +62,8 @@ int main()
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]);
+        GLCALL(glClear(GL_COLOR_BUFFER_BIT));
+        GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
 
         // Start the ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
