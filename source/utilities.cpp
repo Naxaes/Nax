@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <exception>
+#include <stdexcept>
 
 
 std::string Read(const std::string& path)
