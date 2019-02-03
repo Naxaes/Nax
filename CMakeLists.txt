@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 # ---- LIBRARIES ----
 
 # GLAD
-add_library(glad libraries/glad/src/glad.c)
+add_library(glad libraries/glad/source/glad.c)
 target_include_directories(glad PRIVATE libraries/glad/include/)
 
 # GLFW
@@ -34,6 +34,7 @@ add_subdirectory(libraries/googletest)
 
 # ---- PROJECT SETTINGS ----
 add_executable(Nax source/main.cpp)
+target_include_directories(Nax PRIVATE include/)
 
 target_link_libraries(Nax glad glfw assimp imgui gtest)
 target_include_directories(Nax PRIVATE libraries/stb/)
