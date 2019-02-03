@@ -33,7 +33,7 @@ add_subdirectory(libraries/googletest)
 
 
 # ---- PROJECT SETTINGS ----
-add_executable(Nax source/main.cpp source/opengl.cpp)
+add_executable(Nax source/main.cpp source/opengl.cpp source/utilities.cpp)
 target_include_directories(Nax PRIVATE include/)
 
 target_link_libraries(Nax glad glfw assimp imgui gtest)
