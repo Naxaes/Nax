@@ -11,6 +11,8 @@
 #include <stb_image.h>
 
 #include "opengl.h"
+#include "shader.h"
+#include "utilities.h"
 
 
 int main()
@@ -57,6 +59,18 @@ int main()
     ImGui::StyleColorsDark();
     // ImGui::StyleColorsClassic();
 
+    std::string vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
+    std::string fragment_source = Read("../resources/shaders/basic.fragment.glsl");
+    std::cout << vertex_source << std::endl;
+    std::cout << fragment_source << std::endl;
+
+    Shader vertex   = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
+    Shader fragment = CreateShader(fragment_source, ShaderType::FRAGMENT, "basicf");
+    ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position"}, "basic");
+
+    std::cout << "Shader '" << basic.info->name << "' has attribute '" << basic.info->attributes[0].name
+              << "'. It has source for the vertex shader '" << basic.info->shaders[0].info->name
+              << "', which is:\n" << basic.info->shaders[0].info->source << std::endl;
 
     float clear_color[4] = {0, 0, 0, 0};
     /* Loop until the user closes the window */
