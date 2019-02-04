@@ -7,7 +7,7 @@
 #include <utility>
 #include <vector>
 #include <unordered_map>
-#include <memory.h>
+#include <memory>
 
 #include "opengl.h"
 
