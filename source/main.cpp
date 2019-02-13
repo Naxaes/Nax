@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -13,6 +14,7 @@
 #include "opengl.h"
 #include "shader.h"
 #include "utilities.h"
+#include "vao.h"
 
 
 int main()
@@ -44,7 +46,7 @@ int main()
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 
 
-    // IMGUI
+    // ---- IMGUI SETUP ----
     // Setup Dear ImGui binding
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -59,26 +61,40 @@ int main()
     ImGui::StyleColorsDark();
     // ImGui::StyleColorsClassic();
 
+    // ---- SHADER SETUP ----
     std::string vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
     std::string fragment_source = Read("../resources/shaders/basic.fragment.glsl");
     std::cout << vertex_source << std::endl;
     std::cout << fragment_source << std::endl;
 
-    Shader vertex   = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
-    Shader fragment = CreateShader(fragment_source, ShaderType::FRAGMENT, "basicf");
+    Shader vertex       = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
+    Shader fragment     = CreateShader(fragment_source, ShaderType::FRAGMENT, "basicf");
     ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position"}, "basic");
 
     std::cout << "Shader '" << basic.info->name << "' has attribute '" << basic.info->attributes[0].name
               << "'. It has source for the vertex shader '" << basic.info->shaders[0].info->name
               << "', which is:\n" << basic.info->shaders[0].info->source << std::endl;
 
+
+    // ---- MODEL SETUP ----
+    std::vector<Vertex> vertices = {
+            //    Positions          Texture coordinates           Normals
+            {{-0.5f, -0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Left bottom
+            {{ 0.5f,  0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Right top
+            {{-0.5f,  0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Left  top
+            {{ 0.5f, -0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Right bottom
+    };
+    std::vector<GLuint> indices = {
+            0, 1, 2,
+            0, 3, 1
+    };
+    Model quad = IndexedModel(vertices, indices);
+
+
+    // ---- GAME LOOP ----
     float clear_color[4] = {0, 0, 0, 0};
-    /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        GLCALL(glClear(GL_COLOR_BUFFER_BIT));
-        GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
-
         // Start the ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
@@ -103,6 +119,16 @@ int main()
         }
 
         // Rendering
+        GLCALL(glClear(GL_COLOR_BUFFER_BIT));
+        GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
+
+        GLCALL(glUseProgram(basic.id));
+
+        GLCALL(glBindVertexArray(quad.vao));
+        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));
+        GLCALL(glDrawElements(GL_TRIANGLES, quad.count, GL_UNSIGNED_INT, nullptr));
+
+
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
