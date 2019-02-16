@@ -33,10 +33,10 @@ add_subdirectory(libraries/googletest)
 
 
 # ---- PROJECT SETTINGS ----
-add_executable(Nax source/main.cpp source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp)
+add_executable(Nax source/main.cpp source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp)
 target_include_directories(Nax PRIVATE include/)
 
-target_link_libraries(Nax glad glfw assimp imgui gtest)
+target_link_libraries(Nax glad glfw assimp imgui)
 target_include_directories(Nax PRIVATE libraries/stb/)
 target_include_directories(Nax PRIVATE libraries/glm/)
 target_include_directories(Nax PRIVATE libraries/glad/include/)
@@ -44,7 +44,18 @@ target_include_directories(Nax PRIVATE libraries/assimp-4.1.0/include/)
 target_include_directories(Nax PRIVATE libraries/imgui/)
 
 # ---- Tests ----
+enable_testing()
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-# add_executable(example example.cpp)
-# target_link_libraries(example gtest_main)
-# add_test(NAME example_test COMMAND example)
+add_executable(unit-test tests/unit-tests/loader_test.cpp source/loader.cpp)
+target_link_libraries(unit-test glad glfw assimp imgui gtest)
+target_include_directories(unit-test PRIVATE include/)
+target_include_directories(unit-test PRIVATE libraries/stb/)
+target_include_directories(unit-test PRIVATE libraries/glm/)
+target_include_directories(unit-test PRIVATE libraries/glad/include/)
+target_include_directories(unit-test PRIVATE libraries/assimp-4.1.0/include/)
+target_include_directories(unit-test PRIVATE libraries/imgui/)
+target_include_directories(unit-test PRIVATE libraries/googletest/googletest/include)
+target_include_directories(unit-test PRIVATE libraries/googletest/googlemock/include)
+
+add_test(NAME loader-test COMMAND unit-test)

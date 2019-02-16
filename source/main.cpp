@@ -8,13 +8,13 @@
 #include <imgui.h>
 #include <implementation/imgui_impl_opengl3.h>
 #include <implementation/imgui_impl_glfw.h>
-#include <gtest/gtest.h>
 #include <stb_image.h>
 
 #include "opengl.h"
 #include "shader.h"
 #include "utilities.h"
 #include "vao.h"
+#include "loader.h"
 
 
 int main()
@@ -88,7 +88,24 @@ int main()
             0, 1, 2,
             0, 3, 1
     };
-    Model quad = IndexedModel(vertices, indices);
+    Model quad  = IndexedModel(vertices, indices);
+    auto data   = Parse(Read("../resources/models/bunny.obj"));
+    Model bunny = IndexedModel(data.first, data.second);
+
+    // std::string source =
+    //         "# A simple quad\n"
+    //         "v -0.5, -0.5, 0.0\n"
+    //         "v 0.5, 0.5, 0.0\n"
+    //         "v -0.5, 0.5, 0.0\n"
+    //         "v 0.5, -0.5, 0.0\n"
+    //         "vn 0.0, 0.0, 0.0\n"
+    //         "vn 0.0, 0.0, 0.0\n"
+    //         "vn 0.0, 0.0, 0.0\n"
+    //         "vn 0.0, 0.0, 0.0\n"
+    //         "f 1//1 2//2 3//3\n"
+    //         "f 1//1 4//4 2//2\n";
+    // auto data = Parse(source);
+    // Model quad = IndexedModel(data.first, data.second);
 
 
     // ---- GAME LOOP ----
@@ -124,9 +141,13 @@ int main()
 
         GLCALL(glUseProgram(basic.id));
 
-        GLCALL(glBindVertexArray(quad.vao));
-        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));
-        GLCALL(glDrawElements(GL_TRIANGLES, quad.count, GL_UNSIGNED_INT, nullptr));
+        // GLCALL(glBindVertexArray(quad.vao));
+        // GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));
+        // GLCALL(glDrawElements(GL_TRIANGLES, quad.count, GL_UNSIGNED_INT, nullptr));
+
+        GLCALL(glBindVertexArray(bunny.vao));
+        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bunny.ebo));
+        GLCALL(glDrawElements(GL_TRIANGLES, bunny.count, GL_UNSIGNED_INT, nullptr));
 
 
         ImGui::Render();
