@@ -1,3 +1,5 @@
+#include <utility>
+
 #include <iostream>
 #include <vector>
 
@@ -15,6 +17,27 @@
 #include "utilities.h"
 #include "vao.h"
 #include "loader.h"
+
+
+struct Event
+{
+    enum Type { FILE_DROP };
+    Type type;
+};
+
+struct FileDrop : public Event
+{
+    std::string path;
+    FileDrop(std::string path) : path(std::move(path)) { type = Event::FILE_DROP; }
+};
+
+std::vector<Event*> event_queue;
+
+void OnFileDrop(GLFWwindow* window, int file_count, const char** paths)
+{
+    for (unsigned i = 0; i < file_count; ++i)
+        event_queue.push_back(new FileDrop(paths[i]));
+}
 
 
 int main()
@@ -44,6 +67,8 @@ int main()
 
     /* Initialize glad. */
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+
+    glfwSetDropCallback(window, OnFileDrop);
 
 
     // ---- IMGUI SETUP ----
@@ -89,7 +114,7 @@ int main()
             0, 3, 1
     };
     Model quad  = IndexedModel(vertices, indices);
-    auto data   = Parse(Read("../resources/models/bunny.obj"));
+    auto  data  = Parse(Read("../resources/models/bunny.obj"));
     Model bunny = IndexedModel(data.first, data.second);
 
     // std::string source =
@@ -112,6 +137,30 @@ int main()
     float clear_color[4] = {0, 0, 0, 0};
     while (!glfwWindowShouldClose(window))
     {
+
+        // ---- EVENT HANDLING ----
+        for (auto event : event_queue)
+        {
+            if (event->type == Event::FILE_DROP)
+            {
+                // This cast should always be safe.
+                // TODO(ted): This should probably be loaded in a different thread.
+                auto file_drop = reinterpret_cast<FileDrop*>(event);
+                try
+                {
+                    data  = Parse(Read(file_drop->path));
+                    bunny = IndexedModel(data.first, data.second);
+                }
+                catch (const std::runtime_error& error)
+                {
+                    std::cerr << error.what() << std::endl;
+                }
+            }
+        }
+        event_queue.clear();
+
+
+        // ---- IMGUI RENDERING ----
         // Start the ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
@@ -135,7 +184,7 @@ int main()
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         }
 
-        // Rendering
+        // ---- USER RENDERING ----
         GLCALL(glClear(GL_COLOR_BUFFER_BIT));
         GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
 
