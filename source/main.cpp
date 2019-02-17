@@ -144,27 +144,27 @@ int main()
     glm::mat4 model_matrix = {};
     model_matrix = glm::translate(model_matrix, model_position);
 
-
     glm::vec3 view_position  (0.0f, 1.0f,  5.0f);
     glm::vec3 view_direction (0.0f, 0.0f, -1.0f);
     glm::vec3 view_up (0.0f, 1.0f,  0.0f);
 
     glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), 45.0f, 0.1f, 100.0f);
-    glm::vec3 color (0.2f, 0.5f, 0.8f);
+    glm::vec3 clear_color (0.0f, 0.0f, 0.0f);
+    glm::vec3 model_color (0.2f, 0.5f, 0.8f);
+    glm::vec3 sunlight_direction (1.0f, 1.0f, 1.0f);
 
     GLCALL(glUseProgram(basic.id));
     GLCALL(GLint model_location      = glGetUniformLocation(basic.id, "model"));
     GLCALL(GLint view_location       = glGetUniformLocation(basic.id, "view"));
     GLCALL(GLint projection_location = glGetUniformLocation(basic.id, "projection"));
     GLCALL(GLint color_location      = glGetUniformLocation(basic.id, "color"));
+    GLCALL(GLint sunlight_location   = glGetUniformLocation(basic.id, "sunlight_direction"));
 
 
     // ---- GAME LOOP ----
-    float clear_color[4] = {0, 0, 0, 0};
     while (!glfwWindowShouldClose(window))
     {
-
         // ---- EVENT HANDLING ----
         for (auto event : event_queue)
         {
@@ -193,21 +193,11 @@ int main()
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // 1. Show a simple window.
-        // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets automatically appears in a window called "Debug".
         {
             ImGui::Begin("General");
-            // static float f = 0.0f;
-            static int counter = 0;
-            ImGui::Text("Hello, world!");                           // Display some text (you can use a format string too)
-            // ImGui::SliderFloat("float", &f, 0.0f, 1.0f);         // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (NB: most widgets return true when edited/activated)
-                counter++;
-
-            ImGui::SameLine();
-            ImGui::Text("counter = %d", counter);
+            ImGui::ColorEdit3("Background color", &clear_color.x);
+            ImGui::SliderFloat3("Light direction", &sunlight_direction.x, -1.0f, 1.0f);
+            sunlight_direction = glm::normalize(sunlight_direction);  // Always make sure directions are normalized.
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::End();
@@ -257,12 +247,13 @@ int main()
         GLCALL(glUniformMatrix4fv(model_location, 1, GL_FALSE, glm::value_ptr(model_matrix)));
         GLCALL(glUniformMatrix4fv(view_location,  1, GL_FALSE, glm::value_ptr(view_matrix)));
         GLCALL(glUniformMatrix4fv(projection_location,  1, GL_FALSE, glm::value_ptr(projection_matrix)));
-        GLCALL(glUniform3f(color_location, color.x, color.y, color.z));
+        GLCALL(glUniform3f(color_location, model_color.x, model_color.y, model_color.z));
+        GLCALL(glUniform3f(sunlight_location, sunlight_direction.x, sunlight_direction.y, sunlight_direction.z));
 
 
         // ---- USER RENDERING ----
         GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
-        GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
+        GLCALL(glClearColor(clear_color.x, clear_color.y, clear_color.z, 1.0f));
 
         GLCALL(glEnable(GL_CULL_FACE));
         GLCALL(glEnable(GL_DEPTH_TEST));
