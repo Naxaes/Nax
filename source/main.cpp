@@ -6,6 +6,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <assimp/Importer.hpp>
 #include <imgui.h>
 #include <implementation/imgui_impl_opengl3.h>
@@ -55,7 +57,8 @@ int main()
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,  GLFW_TRUE);
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
+    unsigned width = 640, height = 480;
+    window = glfwCreateWindow(width, height, "Hello World", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -89,7 +92,7 @@ int main()
     // ---- SHADER SETUP ----
     std::string vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
     std::string fragment_source = Read("../resources/shaders/basic.fragment.glsl");
-    std::cout << vertex_source << std::endl;
+    std::cout << vertex_source   << std::endl;
     std::cout << fragment_source << std::endl;
 
     Shader vertex       = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
@@ -100,6 +103,7 @@ int main()
               << "'. It has source for the vertex shader '" << basic.info->shaders[0].info->name
               << "', which is:\n" << basic.info->shaders[0].info->source << std::endl;
 
+    std::cout << "It also has '" << basic.info->uniforms[0].name << "' as a uniform." << std::endl;
 
     // ---- MODEL SETUP ----
     std::vector<Vertex> vertices = {
@@ -131,6 +135,29 @@ int main()
     //         "f 1//1 4//4 2//2\n";
     // auto data = Parse(source);
     // Model quad = IndexedModel(data.first, data.second);
+
+
+    // ---- DATA SETUP ----
+    glm::vec3 model_position (0.0f, 0.0f, -5.0f);
+    glm::vec3 model_rotation (0.0f, 0.0f, 0.0f);
+    glm::vec3 model_scale    (1.0f, 1.0f, 1.0f);
+    glm::mat4 model_matrix = {};
+    model_matrix = glm::translate(model_matrix, model_position);
+
+
+    glm::vec3 view_position  (0.0f, 0.0f,  5.0f);
+    glm::vec3 view_direction (0.0f, 0.0f, -1.0f);
+    glm::vec3 view_up (0.0f, 1.0f,  0.0f);
+
+    glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
+    glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), 45.0f, 0.1f, 100.0f);
+    glm::vec3 color (0.2f, 0.5f, 0.8f);
+
+    GLCALL(glUseProgram(basic.id));
+    GLCALL(GLint model_location      = glGetUniformLocation(basic.id, "model"));
+    GLCALL(GLint view_location       = glGetUniformLocation(basic.id, "view"));
+    GLCALL(GLint projection_location = glGetUniformLocation(basic.id, "projection"));
+    GLCALL(GLint color_location      = glGetUniformLocation(basic.id, "color"));
 
 
     // ---- GAME LOOP ----
@@ -169,6 +196,7 @@ int main()
         // 1. Show a simple window.
         // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets automatically appears in a window called "Debug".
         {
+            ImGui::Begin("General");
             // static float f = 0.0f;
             static int counter = 0;
             ImGui::Text("Hello, world!");                           // Display some text (you can use a format string too)
@@ -182,7 +210,55 @@ int main()
             ImGui::Text("counter = %d", counter);
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::End();
         }
+
+        {
+            ImGui::Begin("Model");
+            ImGui::Text("Transform");
+            ImGui::SliderFloat3("Position", &model_position.x, -3.0f,  3.0f);
+            ImGui::SliderFloat3("Rotation", &model_rotation.x, -3.14f, 3.14f);
+            ImGui::SliderFloat3("Scale",    &model_scale.x,     0.0f,  2.0f);
+            if (ImGui::Button("Reset"))
+            {
+                model_position = glm::vec3(0.0f, 0.0f, -2.0f);
+                model_rotation = glm::vec3(0.0f, 0.0f,  0.0f);
+                model_scale    = glm::vec3(1.0f, 1.0f,  1.0f);
+            }
+            ImGui::End();
+        }
+        {
+            ImGui::Begin("View");
+            ImGui::SliderFloat3("Position",  &view_position.x,  -5.0f, 5.0f);
+            ImGui::SliderFloat2("Direction", &view_direction.x, -1.0f, 1.0f);
+            view_direction = glm::normalize(view_direction);
+            if (ImGui::Button("Reset"))
+            {
+                view_position  = glm::vec3(0.0f, 0.0f, 5.0f);
+                view_direction = glm::vec3(0.0f, 0.0f, -1.0f);
+            }
+            ImGui::End();
+        }
+
+        // ---- UPDATING ----
+        // This should be cached and not done at every tick.
+        GLCALL(glUseProgram(basic.id));
+
+        model_matrix = {};
+        model_matrix = glm::translate(model_matrix, model_position);
+        model_matrix = glm::rotate(model_matrix, model_rotation.x, {1.0f, 0.0f, 0.0f});
+        model_matrix = glm::rotate(model_matrix, model_rotation.y, {0.0f, 1.0f, 0.0f});
+        model_matrix = glm::rotate(model_matrix, model_rotation.z, {0.0f, 0.0f, 1.0f});
+        model_matrix = glm::scale(model_matrix, model_scale);
+
+        view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
+        projection_matrix = glm::perspective(glm::radians(45.0f), static_cast<float>(width) / static_cast<float>(height), 0.1f, 100.0f);
+
+        GLCALL(glUniformMatrix4fv(model_location, 1, GL_FALSE, glm::value_ptr(model_matrix)));
+        GLCALL(glUniformMatrix4fv(view_location,  1, GL_FALSE, glm::value_ptr(view_matrix)));
+        GLCALL(glUniformMatrix4fv(projection_location,  1, GL_FALSE, glm::value_ptr(projection_matrix)));
+        GLCALL(glUniform3f(color_location, color.x, color.y, color.z));
+
 
         // ---- USER RENDERING ----
         GLCALL(glClear(GL_COLOR_BUFFER_BIT));
