@@ -138,14 +138,14 @@ int main()
 
 
     // ---- DATA SETUP ----
-    glm::vec3 model_position (0.0f, 0.0f, -5.0f);
+    glm::vec3 model_position (0.0f, 0.0f, 0.0f);
     glm::vec3 model_rotation (0.0f, 0.0f, 0.0f);
     glm::vec3 model_scale    (1.0f, 1.0f, 1.0f);
     glm::mat4 model_matrix = {};
     model_matrix = glm::translate(model_matrix, model_position);
 
 
-    glm::vec3 view_position  (0.0f, 0.0f,  5.0f);
+    glm::vec3 view_position  (0.0f, 1.0f,  5.0f);
     glm::vec3 view_direction (0.0f, 0.0f, -1.0f);
     glm::vec3 view_up (0.0f, 1.0f,  0.0f);
 
@@ -229,8 +229,8 @@ int main()
         }
         {
             ImGui::Begin("View");
-            ImGui::SliderFloat3("Position",  &view_position.x,  -5.0f, 5.0f);
-            ImGui::SliderFloat2("Direction", &view_direction.x, -1.0f, 1.0f);
+            ImGui::SliderFloat3("Position",  &view_position.x,  -10.0f, 10.0f);
+            ImGui::SliderFloat2("Direction", &view_direction.x, - 1.0f,  1.0f);
             view_direction = glm::normalize(view_direction);
             if (ImGui::Button("Reset"))
             {
@@ -261,8 +261,11 @@ int main()
 
 
         // ---- USER RENDERING ----
-        GLCALL(glClear(GL_COLOR_BUFFER_BIT));
+        GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
         GLCALL(glClearColor(clear_color[0], clear_color[1], clear_color[2], clear_color[3]));
+
+        GLCALL(glEnable(GL_CULL_FACE));
+        GLCALL(glEnable(GL_DEPTH_TEST));
 
         GLCALL(glUseProgram(basic.id));
 
