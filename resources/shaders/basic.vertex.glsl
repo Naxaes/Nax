@@ -9,9 +9,9 @@ uniform mat4 view;
 uniform mat4 projection;
 
 out Shared {
-    vec3 position;  // World position.
+    vec3 position;  // World space.
     vec2 texture_coordinate;
-    vec3 normal;
+    vec3 normal;    // World space.
 } vs_out;
 
 
@@ -21,7 +21,7 @@ void main()
     // Send to fragment.
     vs_out.position = vec3(model * vec4(position, 1.0f));
     vs_out.texture_coordinate = texture_coordinate;
-    vs_out.normal = vec3(normalize(model * vec4(normal, 0.0f)));  // Should be normalized, but just a safe guard.
+    vs_out.normal = vec3(normalize(model * vec4(normal, 0.0f)));
 
     // Vertex position on screen.
     gl_Position = projection * view * model * vec4(position, 1.0f);
