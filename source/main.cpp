@@ -57,7 +57,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,  GLFW_TRUE);
 
     /* Create a windowed mode window and its OpenGL context */
-    unsigned width = 640, height = 480;
+    unsigned width = 900, height = 900;
     window = glfwCreateWindow(width, height, "Hello World", nullptr, nullptr);
     if (!window)
     {
@@ -149,7 +149,7 @@ int main()
     glm::vec3 view_up (0.0f, 1.0f,  0.0f);
 
     glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
-    glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), 45.0f, 0.1f, 100.0f);
+    glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), static_cast<float>(width)/static_cast<float>(height), 0.1f, 100.0f);
     glm::vec3 clear_color (0.0f, 0.0f, 0.0f);
     glm::vec3 model_color (0.2f, 0.5f, 0.8f);
     glm::vec3 sunlight_direction (1.0f, 1.0f, -1.0f);
