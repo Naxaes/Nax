@@ -119,7 +119,7 @@ int main()
     };
     Model quad  = IndexedModel(vertices, indices);
     auto  data  = Parse(Read("../resources/models/bunny.obj"));
-    Model bunny = IndexedModel(data.first, data.second);
+    Model model = IndexedModel(data.first, data.second);
 
     // std::string source =
     //         "# A simple quad\n"
@@ -152,7 +152,11 @@ int main()
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), 45.0f, 0.1f, 100.0f);
     glm::vec3 clear_color (0.0f, 0.0f, 0.0f);
     glm::vec3 model_color (0.2f, 0.5f, 0.8f);
-    glm::vec3 sunlight_direction (1.0f, 1.0f, 1.0f);
+    glm::vec3 sunlight_direction (1.0f, 1.0f, -1.0f);
+    float ambient_factor  = 0.1f;
+    float diffuse_factor  = 0.5f;
+    float specular_factor = 0.5f;
+    float shininess = 32.0f;
 
     GLCALL(glUseProgram(basic.id));
     GLCALL(GLint model_location      = glGetUniformLocation(basic.id, "model"));
@@ -160,6 +164,10 @@ int main()
     GLCALL(GLint projection_location = glGetUniformLocation(basic.id, "projection"));
     GLCALL(GLint color_location      = glGetUniformLocation(basic.id, "color"));
     GLCALL(GLint sunlight_location   = glGetUniformLocation(basic.id, "sunlight_direction"));
+    GLCALL(GLint ambient_location    = glGetUniformLocation(basic.id, "ambient_factor"));
+    GLCALL(GLint diffuse_location    = glGetUniformLocation(basic.id, "diffuse_factor"));
+    GLCALL(GLint specular_location   = glGetUniformLocation(basic.id, "specular_factor"));
+    GLCALL(GLint shininess_location  = glGetUniformLocation(basic.id, "shininess"));
 
 
     // ---- GAME LOOP ----
@@ -176,7 +184,7 @@ int main()
                 try
                 {
                     data  = Parse(Read(file_drop->path));
-                    bunny = IndexedModel(data.first, data.second);
+                    model = IndexedModel(data.first, data.second);
                 }
                 catch (const std::runtime_error& error)
                 {
@@ -194,11 +202,14 @@ int main()
         ImGui::NewFrame();
 
         {
-            ImGui::Begin("General");
+            ImGui::Begin("Light");
             ImGui::ColorEdit3("Background color", &clear_color.x);
             ImGui::SliderFloat3("Light direction", &sunlight_direction.x, -1.0f, 1.0f);
             sunlight_direction = glm::normalize(sunlight_direction);  // Always make sure directions are normalized.
-
+            ImGui::SliderFloat("Ambient factor",  &ambient_factor, 0.0f, 1.0f);
+            ImGui::SliderFloat("Diffuse factor",  &diffuse_factor, 0.0f, 1.0f);
+            ImGui::SliderFloat("Specular factor", &specular_factor, 0.0f, 1.0f);
+            ImGui::SliderFloat("Shininess", &shininess, 0.0f, 256.0f);
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::End();
         }
@@ -249,6 +260,10 @@ int main()
         GLCALL(glUniformMatrix4fv(projection_location,  1, GL_FALSE, glm::value_ptr(projection_matrix)));
         GLCALL(glUniform3f(color_location, model_color.x, model_color.y, model_color.z));
         GLCALL(glUniform3f(sunlight_location, sunlight_direction.x, sunlight_direction.y, sunlight_direction.z));
+        GLCALL(glUniform1f(ambient_location,  ambient_factor));
+        GLCALL(glUniform1f(diffuse_location,  diffuse_factor));
+        GLCALL(glUniform1f(specular_location, specular_factor));
+        GLCALL(glUniform1f(shininess_location, shininess));
 
 
         // ---- USER RENDERING ----
@@ -264,9 +279,9 @@ int main()
         // GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));
         // GLCALL(glDrawElements(GL_TRIANGLES, quad.count, GL_UNSIGNED_INT, nullptr));
 
-        GLCALL(glBindVertexArray(bunny.vao));
-        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bunny.ebo));
-        GLCALL(glDrawElements(GL_TRIANGLES, bunny.count, GL_UNSIGNED_INT, nullptr));
+        GLCALL(glBindVertexArray(model.vao));
+        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.ebo));
+        GLCALL(glDrawElements(GL_TRIANGLES, model.count, GL_UNSIGNED_INT, nullptr));
 
 
         ImGui::Render();
