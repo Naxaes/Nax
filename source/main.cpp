@@ -158,21 +158,23 @@ int main()
     float specular_factor = 0.5f;
     float shininess = 32.0f;
 
-    GLCALL(glUseProgram(basic.id));
-    GLCALL(GLint model_location      = glGetUniformLocation(basic.id, "model"));
-    GLCALL(GLint view_location       = glGetUniformLocation(basic.id, "view"));
-    GLCALL(GLint projection_location = glGetUniformLocation(basic.id, "projection"));
-    GLCALL(GLint color_location      = glGetUniformLocation(basic.id, "color"));
-    GLCALL(GLint sunlight_location   = glGetUniformLocation(basic.id, "sunlight_direction"));
-    GLCALL(GLint ambient_location    = glGetUniformLocation(basic.id, "ambient_factor"));
-    GLCALL(GLint diffuse_location    = glGetUniformLocation(basic.id, "diffuse_factor"));
-    GLCALL(GLint specular_location   = glGetUniformLocation(basic.id, "specular_factor"));
-    GLCALL(GLint shininess_location  = glGetUniformLocation(basic.id, "shininess"));
+    Enable(basic);
+    auto model_location      = CacheUniform(basic, "model");
+    auto view_location       = CacheUniform(basic, "view");
+    auto projection_location = CacheUniform(basic, "projection");
+    auto color_location      = CacheUniform(basic, "color");
+    auto sunlight_location   = CacheUniform(basic, "sunlight_direction");
+    auto ambient_location    = CacheUniform(basic, "ambient_factor");
+    auto diffuse_location    = CacheUniform(basic, "diffuse_factor");
+    auto specular_location   = CacheUniform(basic, "specular_factor");
+    auto shininess_location  = CacheUniform(basic, "shininess");
 
 
     // ---- GAME LOOP ----
     while (!glfwWindowShouldClose(window))
     {
+        const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
         // ---- EVENT HANDLING ----
         for (auto event : event_queue)
         {
@@ -243,7 +245,6 @@ int main()
 
         // ---- UPDATING ----
         // This should be cached and not done at every tick.
-        GLCALL(glUseProgram(basic.id));
 
         model_matrix = {};
         model_matrix = glm::translate(model_matrix, model_position);
@@ -255,15 +256,16 @@ int main()
         view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
         projection_matrix = glm::perspective(glm::radians(45.0f), static_cast<float>(width) / static_cast<float>(height), 0.1f, 100.0f);
 
-        GLCALL(glUniformMatrix4fv(model_location, 1, GL_FALSE, glm::value_ptr(model_matrix)));
-        GLCALL(glUniformMatrix4fv(view_location,  1, GL_FALSE, glm::value_ptr(view_matrix)));
-        GLCALL(glUniformMatrix4fv(projection_location,  1, GL_FALSE, glm::value_ptr(projection_matrix)));
-        GLCALL(glUniform3f(color_location, model_color.x, model_color.y, model_color.z));
-        GLCALL(glUniform3f(sunlight_location, sunlight_direction.x, sunlight_direction.y, sunlight_direction.z));
-        GLCALL(glUniform1f(ambient_location,  ambient_factor));
-        GLCALL(glUniform1f(diffuse_location,  diffuse_factor));
-        GLCALL(glUniform1f(specular_location, specular_factor));
-        GLCALL(glUniform1f(shininess_location, shininess));
+        Enable(basic);
+        SetUniform(model_location,      model_matrix);
+        SetUniform(view_location,       view_matrix);
+        SetUniform(projection_location, projection_matrix);
+        SetUniform(color_location,      model_color);
+        SetUniform(sunlight_location,   sunlight_direction);
+        SetUniform(ambient_location,    ambient_factor);
+        SetUniform(diffuse_location,    diffuse_factor);
+        SetUniform(specular_location,   specular_factor);
+        SetUniform(shininess_location,  shininess);
 
 
         // ---- USER RENDERING ----
@@ -273,7 +275,7 @@ int main()
         GLCALL(glEnable(GL_CULL_FACE));
         GLCALL(glEnable(GL_DEPTH_TEST));
 
-        GLCALL(glUseProgram(basic.id));
+        Enable(basic);
 
         // GLCALL(glBindVertexArray(quad.vao));
         // GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));

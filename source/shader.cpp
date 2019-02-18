@@ -12,6 +12,14 @@
 #include "opengl.h"
 
 
+// Forward declaration of internal functions.
+int  ConfirmShaderStatus(GLuint shader, GLuint status);
+void PrintShaderErrors(GLuint shader, GLuint status, std::string name);
+int  ConfirmProgramStatus(GLuint program, GLuint status);
+void PrintProgramErrors(GLuint program, GLuint status, std::string status_name, std::string name);
+std::vector<GLSLAttribute> GetActiveAttributes(GLuint program);
+std::vector<GLSLUniform> GetActiveUniforms(GLuint program);
+
 
 // Creates shader of 'type' and checks if it compiles correctly.
 Shader CreateShader(std::string source, ShaderType type, std::string name)
@@ -172,3 +180,38 @@ void PrintProgramErrors(GLuint program, GLuint status, std::string status_name, 
     );
 }
 
+
+void Enable(const ShaderProgram& program)
+{
+    GLCALL(glUseProgram(program.id));
+}
+
+
+UniformLocation CacheUniform(const ShaderProgram& program, std::string name)
+{
+    GLCALL(GLint location = glGetUniformLocation(program.id, name.c_str()));
+    if (location < 0)
+        throw std::runtime_error("Location " + name + " for program " + program.info->name + " was not found!");
+    return { static_cast<GLuint>(location) };
+};
+
+void SetUniform(UniformLocation uniform, float value)
+{
+    GLCALL(glUniform1f(uniform.id, value));
+}
+void SetUniform(UniformLocation uniform, glm::vec2 value)
+{
+    GLCALL(glUniform2f(uniform.id, value.x, value.y));
+}
+void SetUniform(UniformLocation uniform, glm::vec3 value)
+{
+    GLCALL(glUniform3f(uniform.id, value.x, value.y, value.z));
+}
+void SetUniform(UniformLocation uniform, glm::vec4 value)
+{
+    GLCALL(glUniform4f(uniform.id, value.x, value.y, value.z, value.w));
+}
+void SetUniform(UniformLocation uniform, glm::mat4 value)
+{
+    GLCALL(glUniformMatrix4fv(uniform.id, 1, GL_FALSE, &value[0][0]));
+}
