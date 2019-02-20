@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <deque>
+#include <cassert>
 
 
 std::vector<Event*> GetAll(const EventQueue& queue)
