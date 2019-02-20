@@ -19,26 +19,15 @@
 #include "utilities.h"
 #include "vao.h"
 #include "loader.h"
+#include "event.h"
 
 
-struct Event
-{
-    enum Type { FILE_DROP };
-    Type type;
-};
-
-struct FileDrop : public Event
-{
-    std::string path;
-    FileDrop(std::string path) : path(std::move(path)) { type = Event::FILE_DROP; }
-};
-
-std::vector<Event*> event_queue;
+static EventQueue event_queue;
 
 void OnFileDrop(GLFWwindow* window, int file_count, const char** paths)
 {
     for (unsigned i = 0; i < file_count; ++i)
-        event_queue.push_back(new FileDrop(paths[i]));
+        AddEvent(event_queue, new FileDrop(paths[i]));
 }
 
 
@@ -176,7 +165,7 @@ int main()
         const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
         // ---- EVENT HANDLING ----
-        for (auto event : event_queue)
+        for (auto event : GetAll(event_queue))
         {
             if (event->type == Event::FILE_DROP)
             {
@@ -194,7 +183,7 @@ int main()
                 }
             }
         }
-        event_queue.clear();
+        Clear(event_queue);
 
 
         // ---- IMGUI RENDERING ----
