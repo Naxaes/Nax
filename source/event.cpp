@@ -6,6 +6,8 @@
 
 #include "debug.h"
 
+constexpr unsigned MAX_EVENTS = 128;
+
 
 std::vector<Event*> GetAll(const EventQueue& queue)
 {

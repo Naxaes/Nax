@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-constexpr unsigned MAX_EVENTS = 128;
+extern const unsigned MAX_EVENTS;
 
 struct Event
 {

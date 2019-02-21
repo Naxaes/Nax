@@ -158,9 +158,3 @@ TEST(ParsingOBJ, Cube)
     EXPECT_EQ(result.first.size(), 24);
 
 }
-
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

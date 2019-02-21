@@ -51,7 +51,13 @@ target_include_directories(Nax PRIVATE libraries/imgui/)
 enable_testing()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-add_executable(unit-test tests/unit-tests/loader_test.cpp source/loader.cpp)
+add_executable(
+    unit-test
+    tests/unit-tests/main.cpp tests/unit-tests/loader_test.cpp tests/unit-tests/event-test.cpp
+    source/opengl.cpp source/utilities.cpp source/shader.cpp
+    source/vao.cpp    source/loader.cpp    source/debug.cpp
+    source/event.cpp
+)
 target_link_libraries(unit-test glad glfw assimp imgui gtest)
 target_include_directories(unit-test PRIVATE include/)
 target_include_directories(unit-test PRIVATE libraries/stb/)
@@ -63,3 +69,4 @@ target_include_directories(unit-test PRIVATE libraries/googletest/googletest/inc
 target_include_directories(unit-test PRIVATE libraries/googletest/googlemock/include)
 
 add_test(NAME loader-test COMMAND unit-test)
+add_test(NAME event-test COMMAND unit-test)
