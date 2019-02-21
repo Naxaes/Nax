@@ -8,7 +8,8 @@
 
 std::vector<Event*> GetAll(const EventQueue& queue)
 {
-    std::vector<Event*> events(queue.used);
+    std::vector<Event*> events;
+    events.reserve(queue.used);
     for (unsigned i = 0; i < queue.used; ++i)
         events.push_back(queue.events[i]);
     return events;
