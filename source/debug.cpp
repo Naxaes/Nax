@@ -1,6 +1,8 @@
 #include "debug.h"
 
 #include <iostream>
+#include <cstring>
+#include <cstdarg>
 
 
 void AssertImplementation(
