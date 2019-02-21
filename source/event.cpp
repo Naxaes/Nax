@@ -3,12 +3,14 @@
 #include <string>
 #include <vector>
 #include <deque>
-#include <cassert>
+
+#include "debug.h"
 
 
 std::vector<Event*> GetAll(const EventQueue& queue)
 {
-    std::vector<Event*> events(queue.used);
+    std::vector<Event*> events;
+    events.reserve(queue.used);
     for (unsigned i = 0; i < queue.used; ++i)
         events.push_back(queue.events[i]);
     return events;
@@ -16,7 +18,7 @@ std::vector<Event*> GetAll(const EventQueue& queue)
 
 void AddEvent(EventQueue& queue, Event* event)
 {
-    assert(queue.used < MAX_EVENTS);
+    Assert(queue.used < MAX_EVENTS, "Queue overflown! Has %i events of a maximum %i.", queue.used, MAX_EVENTS);
     queue.events[queue.used++] = event;
 }
 
