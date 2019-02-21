@@ -165,7 +165,7 @@ int main()
         const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
         // ---- EVENT HANDLING ----
-        for (auto event : GetAll(event_queue))
+        for (auto& event : GetAll(event_queue))
         {
             if (event->type == Event::FILE_DROP)
             {

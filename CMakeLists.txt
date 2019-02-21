@@ -33,7 +33,11 @@ add_subdirectory(libraries/googletest)
 
 
 # ---- PROJECT SETTINGS ----
-add_executable(Nax source/main.cpp source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp source/event.cpp)
+add_executable(
+    Nax
+    source/main.cpp  source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp source/debug.cpp
+    source/event.cpp
+)
 target_include_directories(Nax PRIVATE include/)
 
 target_link_libraries(Nax glad glfw assimp imgui)
