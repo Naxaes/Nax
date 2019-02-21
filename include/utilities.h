@@ -2,4 +2,6 @@
 
 #include <string>
 
-std::string Read(const std::string& path);
+#include "errors.h"
+
+Return<std::string> Read(const std::string& path);

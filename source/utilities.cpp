@@ -5,12 +5,13 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "errors.h"
 
-std::string Read(const std::string& path)
+Return<std::string> Read(const std::string& path)
 {
     std::ifstream file(path);
     if (!file.is_open())
-        throw std::runtime_error("Couldn't open file " + path + ".");
+        return CreateError("Couldn't open file '%s'.", path.c_str());
 
     std::stringstream buffer;
     buffer << file.rdbuf();
