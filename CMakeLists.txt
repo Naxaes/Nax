@@ -33,11 +33,12 @@ add_subdirectory(libraries/googletest)
 
 
 # ---- PROJECT SETTINGS ----
-add_executable(
-    Nax
-    source/main.cpp  source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp source/debug.cpp
-    source/event.cpp
+set(
+    SOURCES  # EXCLUDING MAIN!
+    source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp
+    source/debug.cpp  source/event.cpp  source/errors.cpp
 )
+add_executable(Nax source/main.cpp ${SOURCES})
 target_include_directories(Nax PRIVATE include/)
 
 target_link_libraries(Nax glad glfw assimp imgui)
@@ -51,13 +52,11 @@ target_include_directories(Nax PRIVATE libraries/imgui/)
 enable_testing()
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-add_executable(
-    unit-test
-    tests/unit-tests/main.cpp tests/unit-tests/loader_test.cpp tests/unit-tests/event-test.cpp
-    source/opengl.cpp source/utilities.cpp source/shader.cpp
-    source/vao.cpp    source/loader.cpp    source/debug.cpp
-    source/event.cpp
+set(
+    TEST_SOURCES    # EXCLUDING MAIN!
+    tests/unit-tests/loader_test.cpp tests/unit-tests/event-test.cpp
 )
+add_executable(unit-test tests/unit-tests/main.cpp ${TEST_SOURCES} ${SOURCES})
 target_link_libraries(unit-test glad glfw assimp imgui gtest)
 target_include_directories(unit-test PRIVATE include/)
 target_include_directories(unit-test PRIVATE libraries/stb/)

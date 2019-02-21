@@ -79,13 +79,19 @@ int main()
     // ImGui::StyleColorsClassic();
 
     // ---- SHADER SETUP ----
-    std::string vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
-    std::string fragment_source = Read("../resources/shaders/basic.fragment.glsl");
-    std::cout << vertex_source   << std::endl;
+    auto vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
+    auto fragment_source = Check(Read("../resources/shaders/basic.fragment.glsl"));
+
+    if (vertex_source.error)    Print(*vertex_source.error);
+    // if (fragment_source.error)  Print(*fragment_source.error);
+
+    if (vertex_source.error /* || fragment_source.error */ ) return -1;
+
+    std::cout << vertex_source.value   << std::endl;
     std::cout << fragment_source << std::endl;
 
-    Shader vertex       = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
-    Shader fragment     = CreateShader(fragment_source, ShaderType::FRAGMENT, "basicf");
+    Shader vertex       = CreateShader(vertex_source.value,   ShaderType::VERTEX,   "basicv");
+    Shader fragment     = CreateShader(fragment_source,       ShaderType::FRAGMENT, "basicf");
     ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position"}, "basic");
 
     std::cout << "Shader '" << basic.info->name << "' has attribute '" << basic.info->attributes[0].name
@@ -106,9 +112,11 @@ int main()
             0, 1, 2,
             0, 3, 1
     };
-    Model quad  = IndexedModel(vertices, indices);
-    auto  data  = Parse(Read("../resources/models/bunny.obj"));
-    Model model = IndexedModel(data.first, data.second);
+    Model quad   = IndexedModel(vertices, indices);
+    auto  source = Check(Read("../resources/models/bunny.obj"));
+    auto  data   = Parse(source);
+    Model model  = IndexedModel(data.first, data.second);
+
 
     // std::string source =
     //         "# A simple quad\n"
@@ -172,14 +180,13 @@ int main()
                 // This cast should always be safe.
                 // TODO(ted): This should probably be loaded in a different thread.
                 auto file_drop = reinterpret_cast<FileDrop*>(event);
-                try
+                auto source = Read(file_drop->path);
+                if (source.error)
+                    Print(*source.error);
+                else
                 {
-                    data  = Parse(Read(file_drop->path));
+                    data = Parse(source.value);
                     model = IndexedModel(data.first, data.second);
-                }
-                catch (const std::runtime_error& error)
-                {
-                    std::cerr << error.what() << std::endl;
                 }
             }
         }
