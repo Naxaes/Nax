@@ -22,6 +22,19 @@
 #include "event.h"
 
 
+#if _WIN32 || _WIN64
+    const char PATH_TO_VERTEX[]   = "..\\resources\\shaders\\basic.vertex.glsl";
+    const char PATH_TO_FRAGMENT[] = "..\\resources\\shaders\\basic.fragment.glsl";
+    const char PATH_TO_BUNNY[]    = "..\\resources\\models\\bunny.obj";
+#else
+    const char PATH_TO_VERTEX[]   = "../resources/shaders/basic.vertex.glsl";
+    const char PATH_TO_FRAGMENT[] = "../resources/shaders/basic.fragment.glsl";
+    const char PATH_TO_BUNNY[]    = "../resources/models/bunny.obj";
+#endif
+
+
+
+
 static EventQueue event_queue;
 
 void OnFileDrop(GLFWwindow* window, int file_count, const char** paths)
@@ -79,8 +92,8 @@ int main()
     // ImGui::StyleColorsClassic();
 
     // ---- SHADER SETUP ----
-    auto vertex_source   = Read("../resources/shaders/basic.vertex.glsl");
-    auto fragment_source = Check(Read("../resources/shaders/basic.fragment.glsl"));
+    auto vertex_source   = Read(PATH_TO_VERTEX);
+    auto fragment_source = Check(Read(PATH_TO_FRAGMENT));
 
     if (vertex_source.error)    Print(*vertex_source.error);
     // if (fragment_source.error)  Print(*fragment_source.error);
@@ -113,7 +126,7 @@ int main()
             0, 3, 1
     };
     Model quad   = IndexedModel(vertices, indices);
-    auto  source = Check(Read("../resources/models/bunny.obj"));
+    auto  source = Check(Read(PATH_TO_BUNNY));
     auto  data   = Parse(source);
     Model model  = IndexedModel(data.first, data.second);
 

@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0
-BuildDirectory: /Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0
+SourceDirectory: C:/Users/Kleinman/Source/Repos/Nax/libraries/assimp-4.1.0
+BuildDirectory: C:/Users/Kleinman/Source/Repos/Nax/libraries/assimp-4.1.0
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: Teds-MBP.lan
+Site: DESKTOP-11VESJM
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Darwin-c++
+BuildName: Win32-MSBuild
 
 # Subprojects
 LabelsForSubprojects: 
@@ -30,14 +30,14 @@ DropSitePassword:
 DropSiteMode: 
 DropMethod: http
 TriggerSite: 
-ScpCommand: /usr/bin/scp
+ScpCommand: C:/Windows/System32/OpenSSH/scp.exe
 
 # Dashboard start time
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake" "/Users/Kleinman/Documents/Programming/C:C++/Next/libraries/assimp-4.1.0"
-MakeCommand: /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/Kleinman/Source/Repos/Nax/libraries/assimp-4.1.0"
+MakeCommand: "C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -49,12 +49,12 @@ CVSCommand: CVSCOMMAND-NOTFOUND
 CVSUpdateOptions: -d -A -P
 
 # Subversion options
-SVNCommand: /usr/bin/svn
+SVNCommand: SVNCOMMAND-NOTFOUND
 SVNOptions: 
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: /usr/bin/git
+GITCommand: C:/Program Files/Git/cmd/git.exe
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
@@ -72,8 +72,8 @@ UpdateOptions:
 UpdateType: 
 
 # Compiler info
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
-CompilerVersion: 10.0.0.10001145
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.10.25017/bin/HostX86/x86/cl.exe
+CompilerVersion: 19.10.25017.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -86,7 +86,7 @@ MemoryCheckCommandOptions:
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: /usr/bin/gcov
+CoverageCommand: COVERAGE_COMMAND-NOTFOUND
 CoverageExtraFlags: -l
 
 # Cluster commands
@@ -104,7 +104,7 @@ TimeOut: 1500
 # so would cause the system load to exceed this value.
 TestLoad: 
 
-UseLaunchers: 
+UseLaunchers: 0
 CurlOptions: 
 # warning, if you add new options here that have to do with submit,
 # you have to update cmCTestSubmitCommand.cxx

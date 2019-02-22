@@ -48,7 +48,7 @@ set( ASSIMP_LINK_FLAGS "" )
 set( ASSIMP_LIBRARY_DIRS "${ASSIMP_ROOT_DIR}/lib")
 set( ASSIMP_INCLUDE_DIRS "${ASSIMP_ROOT_DIR}/include")
 set( ASSIMP_LIBRARIES assimp${ASSIMP_LIBRARY_SUFFIX})
-set( ASSIMP_LIBRARIES ${ASSIMP_LIBRARIES}d)
+set( ASSIMP_LIBRARIES ${ASSIMP_LIBRARIES})
 
 # search for the boost version assimp was compiled with
 #set(Boost_USE_MULTITHREAD ON)

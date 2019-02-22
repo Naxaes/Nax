@@ -1,11 +1,24 @@
+# Project
+build/
+
 # CMake
 cmake-build-debug/
+*CmakeFiles/
+*.cmake*
 
 # Mac OS
 .DS_Store
 
 # CLion
 .idea/
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj*
+*.stamp*
+*.pc*
+*.tcl*
 
 # Prerequisites
 *.d

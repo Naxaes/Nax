@@ -37,7 +37,7 @@ Shader CreateShader(std::string source, ShaderType type, std::string name)
         PrintShaderErrors(id, GL_COMPILE_STATUS, name);
 
     // TODO(ted): ShaderProgramInfo has no constructor. Must create temporary object to 'make_shared'.
-    return {.id = id, .info = std::make_shared<ShaderInfo>(ShaderInfo{type, name, source})};
+    return { id, std::make_shared<ShaderInfo>(ShaderInfo{type, name, source})};
 }
 
 
@@ -70,7 +70,7 @@ ShaderProgram CreateShaderProgram(
     std::vector<GLSLUniform>   active_uniforms   = GetActiveUniforms(id);
     std::vector<GLSLAttribute> active_attributes = GetActiveAttributes(id);
 
-    return { .id = id, .info = new ShaderProgramInfo{name, shaders, active_attributes, active_uniforms} };
+    return { id, new ShaderProgramInfo{name, shaders, active_attributes, active_uniforms} };
 }
 
 
