@@ -131,21 +131,6 @@ int main()
     Model model  = IndexedModel(data.first, data.second);
 
 
-    // std::string source =
-    //         "# A simple quad\n"
-    //         "v -0.5, -0.5, 0.0\n"
-    //         "v 0.5, 0.5, 0.0\n"
-    //         "v -0.5, 0.5, 0.0\n"
-    //         "v 0.5, -0.5, 0.0\n"
-    //         "vn 0.0, 0.0, 0.0\n"
-    //         "vn 0.0, 0.0, 0.0\n"
-    //         "vn 0.0, 0.0, 0.0\n"
-    //         "vn 0.0, 0.0, 0.0\n"
-    //         "f 1//1 2//2 3//3\n"
-    //         "f 1//1 4//4 2//2\n";
-    // auto data = Parse(source);
-    // Model quad = IndexedModel(data.first, data.second);
-
 
     // ---- DATA SETUP ----
     glm::vec3 model_position (0.0f, 0.0f, 0.0f);
@@ -155,10 +140,11 @@ int main()
     model_matrix = glm::translate(model_matrix, model_position);
 
     glm::vec3 view_position  (0.0f, 1.0f,  5.0f);
-    glm::vec3 view_direction (0.0f, 0.0f, -1.0f);
-    glm::vec3 view_up (0.0f, 1.0f,  0.0f);
+    glm::vec3 view_front     (0.0f, 0.0f, -1.0f);
+    glm::vec3 view_up        (0.0f, 1.0f,  0.0f);
+    glm::vec3 view_velocity  (0.0f, 0.0f,  0.0f);
 
-    glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
+    glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_front, view_up);
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), static_cast<float>(width)/static_cast<float>(height), 0.1f, 100.0f);
     glm::vec3 clear_color (0.0f, 0.0f, 0.0f);
     glm::vec3 model_color (0.2f, 0.5f, 0.8f);
@@ -195,7 +181,9 @@ int main()
                 auto file_drop = reinterpret_cast<FileDrop*>(event);
                 auto source = Read(file_drop->path);
                 if (source.error)
+                {
                     Print(*source.error);
+                }
                 else
                 {
                     data = Parse(source.value);
@@ -204,6 +192,24 @@ int main()
             }
         }
         Clear(event_queue);
+
+        if (!io.WantCaptureKeyboard)
+        {
+            glm::vec3 right = glm::normalize(glm::cross(view_front, view_up));
+            constexpr float speed = 0.1f;
+
+            // Position
+            if (glfwGetKey(window, GLFW_KEY_D))             view_position += right * speed;
+            if (glfwGetKey(window, GLFW_KEY_A))             view_position -= right * speed;
+            if (glfwGetKey(window, GLFW_KEY_W))             view_position += view_front * speed;
+            if (glfwGetKey(window, GLFW_KEY_S))             view_position -= view_front * speed;
+            if (glfwGetKey(window, GLFW_KEY_SPACE))         view_position += view_up * speed;
+            if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL))  view_position -= view_up * speed;
+
+            // Direction
+            if (glfwGetKey(window, GLFW_KEY_E))             view_front.x += speed * 0.1f;
+            if (glfwGetKey(window, GLFW_KEY_Q))             view_front.x -= speed * 0.1f;
+        }
 
 
         // ---- IMGUI RENDERING ----
@@ -224,7 +230,6 @@ int main()
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
             ImGui::End();
         }
-
         {
             ImGui::Begin("Model");
             ImGui::Text("Transform");
@@ -239,18 +244,6 @@ int main()
             }
             ImGui::End();
         }
-        {
-            ImGui::Begin("View");
-            ImGui::SliderFloat3("Position",  &view_position.x,  -10.0f, 10.0f);
-            ImGui::SliderFloat2("Direction", &view_direction.x, - 1.0f,  1.0f);
-            view_direction = glm::normalize(view_direction);
-            if (ImGui::Button("Reset"))
-            {
-                view_position  = glm::vec3(0.0f, 0.0f, 5.0f);
-                view_direction = glm::vec3(0.0f, 0.0f, -1.0f);
-            }
-            ImGui::End();
-        }
 
         // ---- UPDATING ----
         // This should be cached and not done at every tick.
@@ -262,7 +255,7 @@ int main()
         model_matrix = glm::rotate(model_matrix, model_rotation.z, {0.0f, 0.0f, 1.0f});
         model_matrix = glm::scale(model_matrix, model_scale);
 
-        view_matrix = glm::lookAt(view_position, view_position + view_direction, view_up);
+        view_matrix = glm::lookAt(view_position, view_position + view_front, view_up);
         projection_matrix = glm::perspective(glm::radians(45.0f), static_cast<float>(width) / static_cast<float>(height), 0.1f, 100.0f);
 
         Enable(basic);
@@ -285,10 +278,6 @@ int main()
         GLCALL(glEnable(GL_DEPTH_TEST));
 
         Enable(basic);
-
-        // GLCALL(glBindVertexArray(quad.vao));
-        // GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, quad.ebo));
-        // GLCALL(glDrawElements(GL_TRIANGLES, quad.count, GL_UNSIGNED_INT, nullptr));
 
         GLCALL(glBindVertexArray(model.vao));
         GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.ebo));
