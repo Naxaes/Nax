@@ -150,7 +150,6 @@ int main()
     glm::vec3 view_front     (0.0f, 0.0f, -1.0f);
     glm::vec3 view_up        (0.0f, 1.0f,  0.0f);
     glm::vec3 view_velocity  (0.0f, 0.0f,  0.0f);
-    float view_angle = 0.0f;
 
     glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_front, view_up);
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), static_cast<float>(width)/static_cast<float>(height), 0.1f, 100.0f);
@@ -235,30 +234,49 @@ int main()
         ImGui::NewFrame();
 
         {
-            ImGui::Begin("Light");
-            ImGui::ColorEdit3("Background color", &clear_color.x);
-            ImGui::SliderFloat3("Light direction", &sunlight_direction.x, -1.0f, 1.0f);
-            sunlight_direction = glm::normalize(sunlight_direction);  // Always make sure directions are normalized.
-            ImGui::SliderFloat("Ambient factor",  &ambient_factor, 0.0f, 1.0f);
-            ImGui::SliderFloat("Diffuse factor",  &diffuse_factor, 0.0f, 1.0f);
-            ImGui::SliderFloat("Specular factor", &specular_factor, 0.0f, 1.0f);
-            ImGui::SliderFloat("Shininess", &shininess, 0.0f, 256.0f);
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGuiWindowFlags window_flags = 0;
+            // window_flags |= ImGuiWindowFlags_NoTitleBar;
+            window_flags |= ImGuiWindowFlags_NoScrollbar;
+            window_flags |= ImGuiWindowFlags_MenuBar;
+            window_flags |= ImGuiWindowFlags_NoMove;
+            window_flags |= ImGuiWindowFlags_NoResize;
+            // window_flags |= ImGuiWindowFlags_NoCollapse;
+            // window_flags |= ImGuiWindowFlags_NoNav;
+            // window_flags |= ImGuiWindowFlags_AlwaysAutoResize;
+
+            if (ImGui::Begin("Options", nullptr, window_flags))   // Passing 'bool* p_open' displays a Close button on the upper-right corner of the window, the pointed value will be set to false when the button is pressed.
+            {
+                ImGui::Columns(2);
+                ImGui::SetWindowPos(ImVec2(0, 0));
+                ImGui::SetWindowSize(ImVec2(width, height * 0.33f));
+
+                ImGui::ColorEdit3("Background color", &clear_color.x);
+                ImGui::SliderFloat3("Light direction", &sunlight_direction.x, -1.0f, 1.0f);
+                sunlight_direction = glm::normalize(sunlight_direction);  // Always make sure directions are normalized.
+                ImGui::SliderFloat("Ambient factor",  &ambient_factor, 0.0f, 1.0f);
+                ImGui::SliderFloat("Diffuse factor",  &diffuse_factor, 0.0f, 1.0f);
+                ImGui::SliderFloat("Specular factor", &specular_factor, 0.0f, 1.0f);
+                ImGui::SliderFloat("Shininess", &shininess, 0.0f, 256.0f);
+                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+                ImGui::NextColumn();
+
+                ImGui::Text("Transform");
+                ImGui::SliderFloat3("Position", &model_position.x, -3.0f,  3.0f);
+                ImGui::SliderFloat3("Rotation", &model_rotation.x, -3.14f, 3.14f);
+                ImGui::SliderFloat3("Scale",    &model_scale.x,     0.0f,  2.0f);
+                if (ImGui::Button("Reset"))
+                {
+                    model_position = glm::vec3(0.0f, 0.0f, -2.0f);
+                    model_rotation = glm::vec3(0.0f, 0.0f,  0.0f);
+                    model_scale    = glm::vec3(1.0f, 1.0f,  1.0f);
+                }
+
+            }
             ImGui::End();
         }
         {
-            ImGui::Begin("Model");
-            ImGui::Text("Transform");
-            ImGui::SliderFloat3("Position", &model_position.x, -3.0f,  3.0f);
-            ImGui::SliderFloat3("Rotation", &model_rotation.x, -3.14f, 3.14f);
-            ImGui::SliderFloat3("Scale",    &model_scale.x,     0.0f,  2.0f);
-            if (ImGui::Button("Reset"))
-            {
-                model_position = glm::vec3(0.0f, 0.0f, -2.0f);
-                model_rotation = glm::vec3(0.0f, 0.0f,  0.0f);
-                model_scale    = glm::vec3(1.0f, 1.0f,  1.0f);
-            }
-            ImGui::End();
+            // ImGui::ShowDemoWindow();
         }
 
         // ---- UPDATING ----
