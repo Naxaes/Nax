@@ -20,4 +20,6 @@ struct Model
     GLuint vao, ebo, count;
 };
 
+
 Model IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices);
+Model Cube();
