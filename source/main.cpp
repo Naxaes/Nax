@@ -10,6 +10,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <assimp/Importer.hpp>
 #include <imgui.h>
+#include <imgui_demo.cpp>
 #include <implementation/imgui_impl_opengl3.h>
 #include <implementation/imgui_impl_glfw.h>
 #include <stb_image.h>
@@ -33,14 +34,18 @@
 #endif
 
 
-
-
 static EventQueue event_queue;
 
 void OnFileDrop(GLFWwindow* window, int file_count, const char** paths)
 {
     for (unsigned i = 0; i < file_count; ++i)
         AddEvent(event_queue, new FileDrop(paths[i]));
+}
+
+
+void OnResize(GLFWwindow* window, int width, int height)
+{
+    AddEvent(event_queue, new Resize(width, height));
 }
 
 
@@ -59,7 +64,8 @@ int main()
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,  GLFW_TRUE);
 
     /* Create a windowed mode window and its OpenGL context */
-    unsigned width = 900, height = 900;
+    unsigned width = 700, height = 700;
+    bool should_resize = true;
     window = glfwCreateWindow(width, height, "Hello World", nullptr, nullptr);
     if (!window)
     {
@@ -74,6 +80,7 @@ int main()
     gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
 
     glfwSetDropCallback(window, OnFileDrop);
+    glfwSetFramebufferSizeCallback(window, OnResize);
 
 
     // ---- IMGUI SETUP ----
@@ -125,7 +132,7 @@ int main()
             0, 1, 2,
             0, 3, 1
     };
-    Model quad   = IndexedModel(vertices, indices);
+
     auto  source = Check(Read(PATH_TO_BUNNY));
     auto  data   = Parse(source);
     Model model  = IndexedModel(data.first, data.second);
@@ -143,6 +150,7 @@ int main()
     glm::vec3 view_front     (0.0f, 0.0f, -1.0f);
     glm::vec3 view_up        (0.0f, 1.0f,  0.0f);
     glm::vec3 view_velocity  (0.0f, 0.0f,  0.0f);
+    float view_angle = 0.0f;
 
     glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_front, view_up);
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), static_cast<float>(width)/static_cast<float>(height), 0.1f, 100.0f);
@@ -189,6 +197,14 @@ int main()
                     data = Parse(source.value);
                     model = IndexedModel(data.first, data.second);
                 }
+            }
+            else if (event->type == Event::RESIZE)
+            {
+                // This cast should always be safe.
+                auto resize_event = reinterpret_cast<Resize*>(event);
+                width  = resize_event->width;
+                height = resize_event->height;
+                should_resize = true;
             }
         }
         Clear(event_queue);
@@ -271,6 +287,12 @@ int main()
 
 
         // ---- USER RENDERING ----
+        if (should_resize)
+        {
+            should_resize = false;
+            GLCALL(glViewport(0, 0, width, height));
+        }
+
         GLCALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
         GLCALL(glClearColor(clear_color.x, clear_color.y, clear_color.z, 1.0f));
 
