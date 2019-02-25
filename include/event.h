@@ -7,7 +7,7 @@ extern const unsigned MAX_EVENTS;
 
 struct Event
 {
-    enum Type { FILE_DROP };
+    enum Type { FILE_DROP, RESIZE };
     Type type;
 };
 
@@ -15,6 +15,12 @@ struct FileDrop : public Event
 {
     std::string path;
     FileDrop(std::string path) : path(std::move(path)) { type = Event::FILE_DROP; }
+};
+
+struct Resize : public Event
+{
+    unsigned width, height;
+    Resize(unsigned width, unsigned height) : width(width), height(height) { type = Event::RESIZE; }
 };
 
 struct EventQueue
