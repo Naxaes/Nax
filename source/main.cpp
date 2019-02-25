@@ -223,8 +223,20 @@ int main()
             if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL))  view_position -= view_up * speed;
 
             // Direction
-            if (glfwGetKey(window, GLFW_KEY_E))             view_front.x += speed * 0.1f;
-            if (glfwGetKey(window, GLFW_KEY_Q))             view_front.x -= speed * 0.1f;
+            if (glfwGetKey(window, GLFW_KEY_E))
+            {
+                view_angle += speed * 0.2f;
+                view_front.z = -glm::cos(view_angle);
+                view_front.x =  glm::sin(view_angle);
+            }
+            if (glfwGetKey(window, GLFW_KEY_Q))
+            {
+                view_angle -= speed * 0.2f;
+                view_front.z = -glm::cos(view_angle);
+                view_front.x =  glm::sin(view_angle);
+            }
+
+            std::cout << "Front: (" << view_front.x << ", " << view_front.y << ", " << view_front.z << ")" << std::endl;
         }
 
 
