@@ -150,6 +150,7 @@ int main()
     glm::vec3 view_front     (0.0f, 0.0f, -1.0f);
     glm::vec3 view_up        (0.0f, 1.0f,  0.0f);
     glm::vec3 view_velocity  (0.0f, 0.0f,  0.0f);
+    float view_angle = 0.0f;
 
     glm::mat4 view_matrix = glm::lookAt(view_position, view_position + view_front, view_up);
     glm::mat4 projection_matrix = glm::perspective(glm::radians(1.0f), static_cast<float>(width)/static_cast<float>(height), 0.1f, 100.0f);
@@ -234,8 +235,6 @@ int main()
                 view_front.z = -glm::cos(view_angle);
                 view_front.x =  glm::sin(view_angle);
             }
-
-            std::cout << "Front: (" << view_front.x << ", " << view_front.y << ", " << view_front.z << ")" << std::endl;
         }
 
 
