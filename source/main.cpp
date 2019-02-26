@@ -155,11 +155,14 @@ ShaderProgram LoadShaders(std::string vertex_path, std::string fragment_path)
     ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position"}, "basic");
 
     // TODO(ted): Remove.
-    std::cout << "Shader '" << basic.info->name << "' has attribute '" << basic.info->attributes[0].name
-              << "'. It has source for the vertex shader '" << basic.info->shaders[0].info->name
-              << "', which is:\n" << basic.info->shaders[0].info->source << std::endl;
+    auto program_info = GetShaderProgramInfo(basic);
+    auto shader_info  = GetShaderInfo(program_info.shaders[0]);
+    
+    std::cout << "Shader '" << program_info.name << "' has attribute '" << program_info.attributes[0].name
+              << "'. It has source for the vertex shader '" << shader_info.name
+              << "', which is:\n" << shader_info.source << std::endl;
 
-    std::cout << "It also has '" << basic.info->uniforms[0].name << "' as a uniform." << std::endl;
+    std::cout << "It also has '" << program_info.uniforms[0].name << "' as a uniform." << std::endl;
 
     return basic;
 }
