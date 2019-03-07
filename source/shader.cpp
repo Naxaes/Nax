@@ -10,7 +10,7 @@
 #include <memory>
 
 #include "opengl.h"
-
+#include "debug.h"
 
 // Forward declaration of internal functions.
 int  ConfirmShaderStatus(GLuint shader, GLuint status);
@@ -19,6 +19,35 @@ int  ConfirmProgramStatus(GLuint program, GLuint status);
 void PrintProgramErrors(GLuint program, GLuint status, std::string status_name, std::string name);
 std::vector<GLSLAttribute> GetActiveAttributes(GLuint program);
 std::vector<GLSLUniform> GetActiveUniforms(GLuint program);
+
+
+// TODO(ted): We might want to clear these at some point.
+std::vector<ShaderInfo>        shader_info;
+std::vector<ShaderProgramInfo> program_info;
+
+unsigned StoreShaderInfo(ShaderType type, std::string name, std::string source)
+{
+    shader_info.push_back({type, name, source});
+    return static_cast<unsigned int>(shader_info.size() - 1);  // Index of added element.
+}
+ShaderInfo& GetShaderInfo(Shader shader)
+{
+    return shader_info.at(shader.info_index);
+}
+
+unsigned StoreShaderProgramInfo(
+        std::string name, std::vector<Shader> shaders, std::vector<GLSLAttribute> attributes,
+        std::vector<GLSLUniform> uniforms
+)
+{
+    program_info.push_back({name, shaders, attributes, uniforms});
+    return static_cast<unsigned int>(program_info.size() - 1);  // Index of added element.
+}
+ShaderProgramInfo& GetShaderProgramInfo(ShaderProgram program)
+{
+    return program_info.at(program.info_index);
+}
+
 
 
 // Creates shader of 'type' and checks if it compiles correctly.
@@ -36,8 +65,9 @@ Shader CreateShader(std::string source, ShaderType type, std::string name)
     if (!ConfirmShaderStatus(id, GL_COMPILE_STATUS))
         PrintShaderErrors(id, GL_COMPILE_STATUS, name);
 
-    // TODO(ted): ShaderProgramInfo has no constructor. Must create temporary object to 'make_shared'.
-    return { id, std::make_shared<ShaderInfo>(ShaderInfo{type, name, source})};
+    GLuint index = StoreShaderInfo(type, name, source);
+
+    return { id, index };
 }
 
 
@@ -70,7 +100,9 @@ ShaderProgram CreateShaderProgram(
     std::vector<GLSLUniform>   active_uniforms   = GetActiveUniforms(id);
     std::vector<GLSLAttribute> active_attributes = GetActiveAttributes(id);
 
-    return { id, new ShaderProgramInfo{name, shaders, active_attributes, active_uniforms} };
+    GLuint info_index = StoreShaderProgramInfo(name, shaders, active_attributes, active_uniforms);
+
+    return { id, info_index };
 }
 
 
@@ -181,17 +213,17 @@ void PrintProgramErrors(GLuint program, GLuint status, std::string status_name, 
 }
 
 
-void Enable(const ShaderProgram& program)
+void Enable(ShaderProgram program)
 {
     GLCALL(glUseProgram(program.id));
 }
 
 
-UniformLocation CacheUniform(const ShaderProgram& program, std::string name)
+UniformLocation CacheUniform(ShaderProgram program, std::string name)
 {
     GLCALL(GLint location = glGetUniformLocation(program.id, name.c_str()));
     if (location < 0)
-        throw std::runtime_error("Location " + name + " for program " + program.info->name + " was not found!");
+        throw std::runtime_error("Location " + name + " for program " + GetShaderProgramInfo(program).name + " was not found!");
     return { static_cast<GLuint>(location) };
 };
 
@@ -215,3 +247,38 @@ void SetUniform(UniformLocation uniform, glm::mat4 value)
 {
     GLCALL(glUniformMatrix4fv(uniform.id, 1, GL_FALSE, &value[0][0]));
 }
+
+
+
+GLuint AllocateUniformBuffer(unsigned size)
+{
+    // CREATE (global)
+    GLuint buffer;
+    GLCALL(glGenBuffers(1, &buffer));
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, buffer));
+    GLCALL(glBufferData(GL_UNIFORM_BUFFER, size, nullptr, GL_DYNAMIC_DRAW));
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, 0));
+    return buffer;
+}
+
+void SetUniformBuffer(GLuint uniform_block, unsigned size, void* data, unsigned offset)
+{
+    // LOAD (global)
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, uniform_block));
+    GLCALL(glBufferSubData(GL_UNIFORM_BUFFER, offset, size, data));
+}
+
+
+void AddUniformBuffer(ShaderProgram program, const char* uniform_block_name, GLuint uniform_block_name_id)
+{
+    unsigned index = 0;
+
+    // ADD (local)
+    GLCALL(GLint block_index = glGetUniformBlockIndex(program.id, uniform_block_name));
+    Assert(block_index >= 0, "Uniform block %s for shader %s doesn't exist.", uniform_block_name, GetShaderProgramInfo(program).name.c_str());
+
+    GLCALL(glUniformBlockBinding(program.id, block_index, index));
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, uniform_block_name_id));
+    GLCALL(glBindBufferBase(GL_UNIFORM_BUFFER, index, uniform_block_name_id));
+}
+

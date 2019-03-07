@@ -8,6 +8,24 @@
 #include "opengl.h"
 
 
+Model Cube()
+{
+    std::vector<Vertex> vertices = {
+            //    Positions          Texture coordinates           Normals
+            {{-0.5f, -0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Left bottom
+            {{ 0.5f,  0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Right top
+            {{-0.5f,  0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Left  top
+            {{ 0.5f, -0.5f, 0.0f},       {0.0f, 0.0f},        {0.0f, 0.0f, 0.0f}},    // Right bottom
+    };
+    std::vector<GLuint> indices = {
+            0, 1, 2,
+            0, 3, 1
+    };
+
+    return IndexedModel(vertices, indices);
+}
+
+
 Model IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices)
 {
     GLuint vao, vbo, ebo;

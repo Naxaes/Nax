@@ -7,6 +7,8 @@
 #include <glad/glad.h>
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
+#include "opengl.h"
+#include "debug.h"
 
 
 enum class ShaderType
@@ -19,6 +21,21 @@ enum class ShaderType
 
 // ---- STRUCTS ----
 
+struct Shader
+{
+    const GLuint id;
+    const GLuint info_index;
+};
+
+struct ShaderProgram
+{
+    const GLuint id;
+    const GLuint info_index;
+};
+
+
+
+
 // Debugging info for shaders.
 struct ShaderInfo
 {
@@ -26,16 +43,6 @@ struct ShaderInfo
     const std::string name;         // Should we be able to change the name?
     const std::string source;
 };
-
-// Since shaders can be shared by multiple shader programs, we should only free the shader info when no programs
-// are referencing the shader.
-struct Shader
-{
-    const GLuint id;
-    const std::shared_ptr<ShaderInfo> info;
-};
-
-
 
 // Debugging info for shader attributes.
 struct GLSLAttribute
@@ -51,8 +58,6 @@ struct GLSLUniform
     const GLenum type;
 };
 
-
-
 // Debugging info for programs.
 struct ShaderProgramInfo
 {
@@ -62,21 +67,16 @@ struct ShaderProgramInfo
     const std::vector<GLSLUniform>    uniforms;
 };
 
-// ShadersProgram owns its own info object, hence info should be deleted when the program gets deleted.
-struct ShaderProgram
-{
-    const GLuint id;
-    const ShaderProgramInfo* info;
-
-    ~ShaderProgram() { delete info; }
-};
-
 
 // Strong type wrapper.
 struct UniformLocation { GLuint id; };
 
 
-// ---- FUNCTIONS ----
+
+
+// ---- SHADER FUNCTIONS ----
+ShaderInfo& GetShaderInfo(Shader shader);
+ShaderProgramInfo& GetShaderProgramInfo(ShaderProgram program);
 
 
 // Creates shader of 'type' and checks if it compiles correctly.
@@ -89,11 +89,14 @@ void DeleteShader(GLuint shader);
 // Deletes shader program
 void DeleteShaderProgram(GLuint program);
 
-// Enables a ShaderProgram in order to set or cache uniforms.
-void Enable(const ShaderProgram& program);
+// Sets the program as active.
+void Enable(ShaderProgram program);
+
+
+// ---- UNIFORMS ----
 
 // Returns an id to the uniform. NOTE: ShaderProgram must be enabled using Enable(ShaderProgram);
-UniformLocation CacheUniform(const ShaderProgram& program, std::string name);
+UniformLocation CacheUniform(ShaderProgram program, std::string name);
 
 // Overloads for setting a uniform. NOTE: ShaderProgram must be enabled using Enable(ShaderProgram);
 void SetUniform(UniformLocation uniform, float value);
@@ -104,15 +107,50 @@ void SetUniform(UniformLocation uniform, glm::mat4 value);
 
 
 
-// The ones below is used internally.
+
+// ---- UNIFORM BUFFERS ----
+
+// TODO(ted): This template hurts me. Now I have to implement the functions here in the header which forces me to
+//    include "debug.h" and "opengl.h". But I feel it's necessary since we want to be able to access attributes in the
+//    data member. It also allow us to remove a macro that passed the data and size to the CreateBuffer function.
+template<typename Type>
+struct UniformBuffer
+{
+    GLuint id;
+    Type data;
+
+    // TODO(ted): Type is suppose to fulfill GLSL's std140 layout requirements.
+    //    [https://www.khronos.org/registry/OpenGL/specs/gl/glspec45.core.pdf#page=159]
+    //    Warning: You are advised to manually pad your structures/arrays out and avoid using vec3 at all.
+};
 
 
-// int  ConfirmShaderStatus(GLuint shader, GLuint status);
-// void PrintShaderErrors(GLuint shader, GLuint status, std::string name);
-// int  ConfirmProgramStatus(GLuint program, GLuint status);
-// void PrintProgramErrors(GLuint program, GLuint status, std::string status_name, std::string name);
+template<typename Type>
+UniformBuffer<Type> CreateUniformBuffer(const Type& data)
+{
+    constexpr unsigned size = sizeof(Type);
 
-// // Fetches all attributes from a program.
-// std::vector<GLSLAttribute> GetActiveAttributes(GLuint program);
-// // Fetches all uniforms from a program.
-// std::vector<GLSLUniform>   GetActiveUniforms(GLuint program);
+    Assert(size % 4 == 0, "All members in data must be a multiple of 4! Size is %i. Pad the members!", size);
+
+    GLuint buffer;
+    GLCALL(glGenBuffers(1, &buffer));
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, buffer));
+    GLCALL(glBufferData(GL_UNIFORM_BUFFER, size, nullptr, GL_DYNAMIC_DRAW));
+
+    return {buffer, data};
+}
+
+template<typename Type>
+void SetUniformBuffer(UniformBuffer<Type> uniform_buffer, unsigned offset = 0)
+{
+    constexpr unsigned size = sizeof(Type);
+
+    // LOAD (global)
+    GLCALL(glBindBuffer(GL_UNIFORM_BUFFER, uniform_buffer.id));
+    GLCALL(glBufferSubData(GL_UNIFORM_BUFFER, offset, size, &uniform_buffer.data));
+}
+
+
+GLuint AllocateUniformBuffer(unsigned size);
+void   SetUniformBuffer(GLuint uniform_block, unsigned size, void* data, unsigned offset = 0);
+void   AddUniformBuffer(ShaderProgram program, const char* uniform_block_name, GLuint uniform_block_name_id);
