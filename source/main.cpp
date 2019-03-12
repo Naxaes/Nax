@@ -78,14 +78,14 @@ glm::mat4 ModelMatrix(Transform transform)
 
 struct SunLight
 {
-    glm::vec3 direction;
-    glm::vec3 color;
+    glm::vec4 direction;
+    glm::vec4 color;
 };
 
 
 struct Material
 {
-    glm::vec3 color = {0.2f, 0.5f, 0.8f};
+    glm::vec4 color = {0.2f, 0.5f, 0.8f, 1.0f};
     float ambient_factor  = 0.1f;
     float diffuse_factor  = 0.5f;
     float specular_factor = 0.5f;
@@ -111,14 +111,14 @@ Window CreateWindow(unsigned width, unsigned height, std::string title)
     glfwWindowHint(GLFW_OPENGL_PROFILE,        GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,  GLFW_TRUE);
-    
-    
+
+
     GLFWwindow* window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     Assert(window, "Couldn't create window.");
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-    
+
     glfwSetDropCallback(window, OnFileDrop);
     glfwSetFramebufferSizeCallback(window, OnResize);
 
@@ -147,28 +147,39 @@ ShaderProgram LoadShaders(std::string vertex_path, std::string fragment_path)
     auto fragment_source = Check(Read(fragment_path));
 
     // TODO(ted): Remove.
-    std::cout << vertex_source   << std::endl;
-    std::cout << fragment_source << std::endl;
+    // std::cout << vertex_source   << std::endl;
+    // std::cout << fragment_source << std::endl;
 
     Shader vertex       = CreateShader(vertex_source,   ShaderType::VERTEX,   "basicv");
     Shader fragment     = CreateShader(fragment_source, ShaderType::FRAGMENT, "basicf");
-    ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position"}, "basic");
+    ShaderProgram basic = CreateShaderProgram({vertex, fragment}, {"position", "texture_coordinate", "normal"}, "basic");
 
     // TODO(ted): Remove.
-    auto program_info = GetShaderProgramInfo(basic);
-    auto shader_info  = GetShaderInfo(program_info.shaders[0]);
-    
-    std::cout << "Shader '" << program_info.name << "' has attribute '" << program_info.attributes[0].name
-              << "'. It has source for the vertex shader '" << shader_info.name
-              << "', which is:\n" << shader_info.source << std::endl;
+    auto info = GetShaderProgramInfo(basic);
+    std::cout << "Shader '" << info.name << "' has attribute '" << info.attributes[0].name
+              << "'. It has source for the vertex shader '" << GetShaderInfo(info.shaders[0]).name
+              << "', which is:\n" << GetShaderInfo(info.shaders[0]).source << std::endl;
 
-    std::cout << "It also has '" << program_info.uniforms[0].name << "' as a uniform." << std::endl;
+    std::cout << "It also has '" << info.uniforms[0].name << "' as a uniform." << std::endl;
 
     return basic;
 }
 
 
+// Holder for uniform buffer data.
+struct Data
+{
+    glm::mat4 view;
+    glm::mat4 perspective;
 
+    glm::vec4 color;
+    SunLight sunlight;
+
+    float ambient_factor;
+    float diffuse_factor;
+    float specular_factor;
+    float shininess;
+};
 
 int main()
 {
@@ -185,10 +196,10 @@ int main()
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;  // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;   // Enable Gamepad Controls
 
-    
+
     // ---- SHADER SETUP ----
     ShaderProgram basic = LoadShaders(PATH_TO_VERTEX, PATH_TO_FRAGMENT);
-    
+
 
     // ---- MODEL SETUP ----
     auto  source = Check(Read(PATH_TO_BUNNY));
@@ -211,26 +222,46 @@ int main()
     glm::vec3 clear_color (0.0f, 0.0f, 0.0f);
 
     SunLight sunlight;
-    sunlight.direction = {1.0f, 1.0f, -1.0f};
-    sunlight.color     = {1.0f, 1.0f,  1.0f};
+    sunlight.direction = {1.0f, 1.0f, -1.0f, 0.0f};
+    sunlight.color     = {1.0f, 1.0f,  1.0f, 1.0f};
 
     Material material;
-    material.color = {0.2f, 0.5f, 0.8f};
+    material.color = {0.2f, 0.5f, 0.8f, 1.0f};
     material.ambient_factor  = 0.1f;
     material.diffuse_factor  = 0.5f;
     material.specular_factor = 0.5f;
     material.shininess = 32.0f;
 
     Enable(basic);
+
+    auto uniform_buffer = CreateUniformBuffer(Data {});
+    uniform_buffer.data.view = view_matrix;
+    uniform_buffer.data.perspective = projection_matrix;
+    uniform_buffer.data.color = material.color;
+    uniform_buffer.data.sunlight = sunlight;
+    uniform_buffer.data.ambient_factor = material.ambient_factor;
+    uniform_buffer.data.diffuse_factor = material.diffuse_factor;
+    uniform_buffer.data.specular_factor = material.specular_factor;
+    uniform_buffer.data.shininess = material.shininess;
+    AddUniformBuffer(basic, "Data", uniform_buffer.id);
+
+    for (auto& x : GetShaderProgramInfo(basic).uniforms)
+        std::cout << x.name << std::endl;
+
+    // auto uniform_buffer_location = CreateUniformBuffer(sizeof(uniform_buffer_data));
+    // AddUniformBuffer(basic, "Data", uniform_buffer_location);
+    // SetUniformBuffer(uniform_buffer_location, sizeof(uniform_buffer_data), &uniform_buffer_data);
+
+    //
     auto model_location      = CacheUniform(basic, "model");
-    auto view_location       = CacheUniform(basic, "view");
-    auto projection_location = CacheUniform(basic, "projection");
-    auto color_location      = CacheUniform(basic, "color");
-    auto sunlight_location   = CacheUniform(basic, "sunlight_direction");
-    auto ambient_location    = CacheUniform(basic, "ambient_factor");
-    auto diffuse_location    = CacheUniform(basic, "diffuse_factor");
-    auto specular_location   = CacheUniform(basic, "specular_factor");
-    auto shininess_location  = CacheUniform(basic, "shininess");
+    // auto view_location       = CacheUniform(basic, "view");
+    // auto projection_location = CacheUniform(basic, "projection");
+    // auto color_location      = CacheUniform(basic, "color");
+    // auto sunlight_location   = CacheUniform(basic, "sunlight_direction");
+    // auto ambient_location    = CacheUniform(basic, "ambient_factor");
+    // auto diffuse_location    = CacheUniform(basic, "diffuse_factor");
+    // auto specular_location   = CacheUniform(basic, "specular_factor");
+    // auto shininess_location  = CacheUniform(basic, "shininess");
 
 
     // ---- GAME LOOP ----
@@ -321,6 +352,7 @@ int main()
                 ImGui::SetWindowSize(ImVec2(window.width, 0));
 
                 ImGui::ColorEdit3("Background color", &clear_color.x);
+                ImGui::ColorEdit3("Sun light color", &sunlight.color.x);
                 ImGui::SliderFloat3("Light direction", &sunlight.direction.x, -1.0f, 1.0f);
                 sunlight.direction = glm::normalize(sunlight.direction);  // Always make sure directions are normalized.
                 ImGui::SliderFloat("Ambient factor",  &material.ambient_factor, 0.0f, 1.0f);
@@ -357,15 +389,24 @@ int main()
 
         Enable(basic);
         SetUniform(model_location,      ModelMatrix(model_transform));
-        SetUniform(view_location,       view_matrix);
-        SetUniform(projection_location, projection_matrix);
-        SetUniform(color_location,      material.color);
-        SetUniform(sunlight_location,   sunlight.direction);
-        SetUniform(ambient_location,    material.ambient_factor);
-        SetUniform(diffuse_location,    material.diffuse_factor);
-        SetUniform(specular_location,   material.specular_factor);
-        SetUniform(shininess_location,  material.shininess);
-
+        // SetUniform(view_location,       view_matrix);
+        // SetUniform(projection_location, projection_matrix);
+        // SetUniform(color_location,      material.color);
+        // SetUniform(sunlight_location,   sunlight.direction);
+        // SetUniform(ambient_location,    material.ambient_factor);
+        // SetUniform(diffuse_location,    material.diffuse_factor);
+        // SetUniform(specular_location,   material.specular_factor);
+        // SetUniform(shininess_location,  material.shininess);
+        uniform_buffer.data.view = view_matrix;
+        uniform_buffer.data.perspective = projection_matrix;
+        uniform_buffer.data.color = material.color;
+        uniform_buffer.data.sunlight = sunlight;
+        uniform_buffer.data.ambient_factor = material.ambient_factor;
+        uniform_buffer.data.diffuse_factor = material.diffuse_factor;
+        uniform_buffer.data.specular_factor = material.specular_factor;
+        uniform_buffer.data.shininess = material.shininess;
+        // SetUniformBuffer(uniform_buffer_location, sizeof(uniform_buffer_data), &uniform_buffer_data);
+        SetUniformBuffer(uniform_buffer);
 
         // ---- USER RENDERING ----
         if (should_resize)
