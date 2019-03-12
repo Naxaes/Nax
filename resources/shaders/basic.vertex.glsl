@@ -4,9 +4,26 @@ layout (location = 0) in vec3 position;
 layout (location = 1) in vec2 texture_coordinate;
 layout (location = 2) in vec3 normal;
 
+struct SunLight
+{
+    vec4 direction;
+    vec4 color;
+};
+
 uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
+layout (std140) uniform Data
+{
+    mat4 view;
+    mat4 projection;
+
+    vec4 color;
+    SunLight sunlight;
+
+    float ambient_factor;
+    float diffuse_factor;
+    float specular_factor;
+    float shininess;
+};
 
 out Shared {
     vec3 position;  // World space.
