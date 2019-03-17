@@ -28,10 +28,12 @@
     const char PATH_TO_VERTEX[]   = "..\\resources\\shaders\\basic.vertex.glsl";
     const char PATH_TO_FRAGMENT[] = "..\\resources\\shaders\\basic.fragment.glsl";
     const char PATH_TO_BUNNY[]    = "..\\resources\\models\\bunny.obj";
+    const char PATH_TO_NANOSUIT[] = "..\\resources\\models\\crysis-nano-suit-2\\source\\scene.fbx";
 #else
     const char PATH_TO_VERTEX[]   = "../resources/shaders/basic.vertex.glsl";
-    const char PATH_TO_FRAGMENT[] = "../resources/shaders/basic.fragment.glsl";
+    const char PATH_TO_FRAGMENT[] = "../resources/shaders/texture.fragment.glsl";
     const char PATH_TO_BUNNY[]    = "../resources/models/bunny.obj";
+    const char PATH_TO_NANOSUIT[] = "../resources/models/crysis_nano_suit_2/scene.gltf";
 #endif
 
 
@@ -181,6 +183,50 @@ struct Data
     float shininess;
 };
 
+
+void Draw(ShaderProgram program, TexturedModel model)
+{
+    for (const TexturedMesh& mesh : model.meshes)
+    {
+        // bind appropriate textures
+        unsigned int diffuseNr  = 1;
+        unsigned int specularNr = 1;
+        unsigned int normalNr   = 1;
+        unsigned int heightNr   = 1;
+
+        for (unsigned int i = 0; i < mesh.textures.size(); i++)
+        {
+            GLCALL(glActiveTexture(GL_TEXTURE0 + i)); // active proper texture unit before binding
+            // retrieve texture number (the N in diffuse_textureN)
+            std::string number;
+            std::string name = mesh.textures[i].type;
+            if (name == "texture_diffuse")
+                number = std::to_string(diffuseNr++);
+            else if (name == "texture_specular")
+                number = std::to_string(specularNr++); // transfer unsigned int to stream
+            else if (name == "texture_normal")
+                number = std::to_string(normalNr++); // transfer unsigned int to stream
+            else if (name == "texture_height")
+                number = std::to_string(heightNr++); // transfer unsigned int to stream
+
+            // now set the sampler to the correct texture unit
+            GLCALL(glUniform1i(glGetUniformLocation(program.id, (name + number).c_str()), i));
+            // and finally bind the texture
+            GLCALL(glBindTexture(GL_TEXTURE_2D, mesh.textures[i].id));
+        }
+
+        // draw mesh
+        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.mesh.ebo));
+        GLCALL(glBindVertexArray(mesh.mesh.vao));
+        GLCALL(glDrawElements(GL_TRIANGLES, mesh.mesh.count, GL_UNSIGNED_INT, 0));
+        GLCALL(glBindVertexArray(0));
+
+        // always good practice to set everything back to defaults once configured.
+        GLCALL(glActiveTexture(GL_TEXTURE0));
+    }
+}
+
+
 int main()
 {
     Window window = CreateWindow(700, 700, "Nax");
@@ -202,9 +248,10 @@ int main()
 
 
     // ---- MODEL SETUP ----
-    auto  source = Check(Read(PATH_TO_BUNNY));
-    auto  data   = Parse(source);
-    Model model  = IndexedModel(data.first, data.second);
+    // auto  source = Check(Read(PATH_TO_BUNNY));
+    // auto  data   = Parse(source);
+    // Mesh model  = IndexedModel(data.first, data.second);
+    TexturedModel model = LoadModel(PATH_TO_NANOSUIT);
 
 
     // ---- DATA SETUP ----
@@ -277,16 +324,7 @@ int main()
                 // This cast should always be safe.
                 // TODO(ted): This should probably be loaded in a different thread.
                 auto file_drop = reinterpret_cast<FileDrop*>(event);
-                auto source = Read(file_drop->path);
-                if (source.error)
-                {
-                    Print(*source.error);
-                }
-                else
-                {
-                    data  = Parse(source.value);
-                    model = IndexedModel(data.first, data.second);
-                }
+                model = LoadModel(file_drop->path);
             }
             else if (event->type == Event::RESIZE)
             {
@@ -423,10 +461,11 @@ int main()
 
         Enable(basic);
 
-        GLCALL(glBindVertexArray(model.vao));
-        GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.ebo));
-        GLCALL(glDrawElements(GL_TRIANGLES, model.count, GL_UNSIGNED_INT, nullptr));
-
+        Draw(basic, model);
+        // GLCALL(glBindVertexArray(model.vao));
+        // GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.ebo));
+        // GLCALL(glDrawElements(GL_TRIANGLES, model.count, GL_UNSIGNED_INT, nullptr));
+        //
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 #include <glm/vec3.hpp>
 #include <glm/vec2.hpp>
@@ -13,13 +14,33 @@ struct Vertex
     glm::vec3 position;
     glm::vec2 texture_coordinate;
     glm::vec3 normal;
+    glm::vec3 tangent;
+    glm::vec3 bitangent;
 };
 
-struct Model
+struct Texture
+{
+    GLuint id;
+    std::string type;
+};
+
+struct Mesh
 {
     GLuint vao, ebo, count;
 };
 
+struct TexturedMesh
+{
+    Mesh mesh;
+    std::vector<Texture> textures;
+};
 
-Model IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices);
-Model Cube();
+struct TexturedModel
+{
+    std::vector<TexturedMesh> meshes;
+};
+
+
+
+Mesh IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices);
+Mesh Cube();
