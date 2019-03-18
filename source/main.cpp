@@ -22,6 +22,7 @@
 #include "loader.h"
 #include "event.h"
 #include "debug.h"
+#include "window.h"
 
 
 #if _WIN32 || _WIN64
@@ -35,22 +36,6 @@
     const char PATH_TO_BUNNY[]    = "../resources/models/bunny.obj";
     const char PATH_TO_NANOSUIT[] = "../resources/models/crysis_nano_suit_2/scene.gltf";
 #endif
-
-
-static EventQueue event_queue;
-
-
-void OnFileDrop(GLFWwindow* window, int file_count, const char** paths)
-{
-    for (unsigned i = 0; i < file_count; ++i)
-        AddEvent(event_queue, new FileDrop(paths[i]));
-}
-
-
-void OnResize(GLFWwindow* window, int width, int height)
-{
-    AddEvent(event_queue, new Resize(width, height));
-}
 
 
 struct Transform
@@ -93,39 +78,6 @@ struct Material
     float specular_factor = 0.5f;
     float shininess = 32.0f;
 };
-
-struct Window
-{
-    GLFWwindow* handle;
-    unsigned width;
-    unsigned height;
-};
-
-
-Window CreateWindow(unsigned width, unsigned height, std::string title)
-{
-    // ---- INITIALIZE GLFW ----
-    Assert(glfwInit(), "Couldn't initialize GLFW.");
-
-    // ---- WINDOW HINTS ----
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE,        GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
-    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT,  GLFW_TRUE);
-
-
-    GLFWwindow* window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-    Assert(window, "Couldn't create window.");
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
-    glfwSetDropCallback(window, OnFileDrop);
-    glfwSetFramebufferSizeCallback(window, OnResize);
-
-    return {window, width, height};
-}
 
 
 void InitializeImGui(GLFWwindow* window)
@@ -257,10 +209,10 @@ int main()
     // ---- DATA SETUP ----
     Transform model_transform {};
 
-    glm::vec3 view_position  (0.0f, 1.0f,  5.0f);
-    glm::vec3 view_front     (0.0f, 0.0f, -1.0f);
-    glm::vec3 view_up        (0.0f, 1.0f,  0.0f);
-    glm::vec3 view_velocity  (0.0f, 0.0f,  0.0f);
+    glm::vec3 view_position  (0.0f, 10.0f,  20.0f);
+    glm::vec3 view_front     (0.0f, 0.0f,  -1.0f);
+    glm::vec3 view_up        (0.0f, 1.0f,   0.0f);
+    glm::vec3 view_velocity  (0.0f, 0.0f,   0.0f);
     float view_angle = 0.0f;
 
 

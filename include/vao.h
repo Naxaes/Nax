@@ -27,6 +27,9 @@ struct Texture
 struct Mesh
 {
     GLuint vao, ebo, count;
+
+    // TODO(ted): Should we have this? Keeping it now for debugging purposes.
+    std::vector<Vertex> vertices;
 };
 
 struct TexturedMesh

@@ -57,5 +57,5 @@ Mesh IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices)
 
     GLCALL(glBindVertexArray(0));
 
-    return {vao, ebo, static_cast<GLuint>(indices.size())};
+    return {vao, ebo, static_cast<GLuint>(indices.size()), vertices};
 }

@@ -36,7 +36,7 @@ add_subdirectory(libraries/googletest)
 set(
     SOURCES  # EXCLUDING MAIN!
     source/opengl.cpp source/utilities.cpp source/shader.cpp source/vao.cpp source/loader.cpp
-    source/debug.cpp  source/event.cpp  source/errors.cpp
+    source/debug.cpp  source/event.cpp  source/errors.cpp    source/window.cpp
 )
 add_executable(Nax source/main.cpp ${SOURCES})
 target_include_directories(Nax PRIVATE include/)
