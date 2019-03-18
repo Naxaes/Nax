@@ -8,7 +8,7 @@
 #include "opengl.h"
 
 
-Model Cube()
+Mesh Cube()
 {
     std::vector<Vertex> vertices = {
             //    Positions          Texture coordinates           Normals
@@ -26,7 +26,7 @@ Model Cube()
 }
 
 
-Model IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices)
+Mesh IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices)
 {
     GLuint vao, vbo, ebo;
 
@@ -57,5 +57,5 @@ Model IndexedModel(std::vector<Vertex> vertices, std::vector<GLuint> indices)
 
     GLCALL(glBindVertexArray(0));
 
-    return {vao, ebo, static_cast<GLuint>(indices.size())};
+    return {vao, ebo, static_cast<GLuint>(indices.size()), vertices};
 }
