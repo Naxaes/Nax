@@ -15,6 +15,8 @@
 #include <implementation/imgui_impl_glfw.h>
 #include <stb_image.h>
 
+#undef CreateWindow  // TODO(tes): Windows inserts this macro implicitly. How do we fix it without this hack?
+
 #include "opengl.h"
 #include "shader.h"
 #include "utilities.h"
@@ -26,15 +28,15 @@
 
 
 #if _WIN32 || _WIN64
-    const char PATH_TO_VERTEX[]   = "..\\resources\\shaders\\basic.vertex.glsl";
-    const char PATH_TO_FRAGMENT[] = "..\\resources\\shaders\\basic.fragment.glsl";
-    const char PATH_TO_BUNNY[]    = "..\\resources\\models\\bunny.obj";
-    const char PATH_TO_NANOSUIT[] = "..\\resources\\models\\crysis-nano-suit-2\\source\\scene.fbx";
+    const char PATH_TO_VERTEX[]   = __FILE__ "\\..\\..\\resources\\shaders\\basic.vertex.glsl";
+    const char PATH_TO_FRAGMENT[] = __FILE__ "\\..\\..\\resources\\shaders\\texture.fragment.glsl";
+    const char PATH_TO_BUNNY[]    = __FILE__ "\\..\\..\\resources\\models\\bunny.obj";
+    const char PATH_TO_NANOSUIT[] = __FILE__ "\\..\\..\\resources\\models\\crysis_nano_suit_2\\scene.gltf";
 #else
-    const char PATH_TO_VERTEX[]   = "../resources/shaders/basic.vertex.glsl";
-    const char PATH_TO_FRAGMENT[] = "../resources/shaders/texture.fragment.glsl";
-    const char PATH_TO_BUNNY[]    = "../resources/models/bunny.obj";
-    const char PATH_TO_NANOSUIT[] = "../resources/models/crysis_nano_suit_2/scene.gltf";
+    const char PATH_TO_VERTEX[]   = __FILE__ "/../../resources/shaders/basic.vertex.glsl";
+    const char PATH_TO_FRAGMENT[] = __FILE__ "/../../resources/shaders/texture.fragment.glsl";
+    const char PATH_TO_BUNNY[]    = __FILE__ "/../../resources/models/bunny.obj";
+    const char PATH_TO_NANOSUIT[] = __FILE__ "/../../resources/models/crysis_nano_suit_2/scene.gltf";
 #endif
 
 
@@ -48,9 +50,9 @@ struct Transform
 
 glm::mat4 ModelMatrix(Transform transform)
 {
-    constexpr glm::vec3 x_axis = {1.0f, 0.0f, 0.0f};
-    constexpr glm::vec3 y_axis = {0.0f, 1.0f, 0.0f};
-    constexpr glm::vec3 z_axis = {0.0f, 0.0f, 1.0f};
+    const glm::vec3 x_axis = {1.0f, 0.0f, 0.0f};
+	const glm::vec3 y_axis = {0.0f, 1.0f, 0.0f};
+	const glm::vec3 z_axis = {0.0f, 0.0f, 1.0f};
 
     glm::mat4 model_matrix = {};
     model_matrix = glm::translate(model_matrix, transform.position);

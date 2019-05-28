@@ -36,6 +36,9 @@ void AssertImplementation(
             statement, file, line, buffer
     );
 
+	std::cout << "Press enter to continue..." << std::endl;  // To keep windows window open.
+	std::cin.get();
+
     exit(-1);
 }
 

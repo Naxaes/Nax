@@ -2,6 +2,7 @@
 
 
 #include <cstdlib>
+#include <iostream>
 
 #define CreateError(message, ...) CreateErrorImplementation(__FUNCTION__, __FILE__, __LINE__, message, __VA_ARGS__)
 
@@ -36,7 +37,11 @@ Type Check(const Return<Type>&& x)
         return x.value;
 
     Print(*x.error);
-    exit(-1);
+
+	std::cout << "Press enter to continue..." << std::endl;  // To keep windows window open.
+	std::cin.get();
+
+	exit(-1);
 }
 
 
