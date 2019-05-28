@@ -2,6 +2,7 @@
 
 
 #include <cstdlib>
+#include <iostream>
 
 #define CreateError(message, ...) CreateErrorImplementation(__FUNCTION__, __FILE__, __LINE__, message, __VA_ARGS__)
 
