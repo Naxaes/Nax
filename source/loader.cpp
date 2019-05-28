@@ -22,7 +22,7 @@
 #include <assimp/postprocess.h>
 
 #include "debug.h"
-
+#include "utilities.h"
 
 std::unordered_map<std::string, Texture> loaded_textures {};
 
@@ -46,7 +46,7 @@ TexturedModel LoadModel(const std::string& path)
         return {};
     }
 
-    std::string directory = path.substr(0, path.find_last_of('/'));
+	std::string directory = path.substr(0, path.find_last_of(DIRECTORY_SEPERATOR));
 
     return ProcessNode(scene, directory);
 }
@@ -194,7 +194,7 @@ std::vector<Texture> LoadMaterialTextures(aiMaterial* mat, aiTextureType type, s
         if (it == loaded_textures.end())
         {   // if texture hasn't been loaded already, load it
             Texture texture;
-            texture.id = TextureFromFile(directory + "/" + path);  // TODO(ted): Make cross-platform compatible
+            texture.id = TextureFromFile(directory + DIRECTORY_SEPERATOR + path);
             texture.type = type_name;
             textures.push_back(texture);
 

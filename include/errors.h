@@ -36,7 +36,11 @@ Type Check(const Return<Type>&& x)
         return x.value;
 
     Print(*x.error);
-    exit(-1);
+
+	std::cout << "Press enter to continue..." << std::endl;  // To keep windows window open.
+	std::cin.get();
+
+	exit(-1);
 }
 
 

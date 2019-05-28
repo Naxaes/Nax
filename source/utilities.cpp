@@ -7,6 +7,13 @@
 
 #include "errors.h"
 
+#if _WIN32 || _WIN64
+	const char DIRECTORY_SEPERATOR = '\\';
+#else
+	const char DIRECTORY_SEPERATOR = '/';
+#endif
+
+
 Return<std::string> Read(const std::string& path)
 {
     std::ifstream file(path);
