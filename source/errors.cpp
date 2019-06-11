@@ -17,7 +17,7 @@ void Print(const Error& error)
     );
 }
 
-Error* CreateErrorImplementation(const char* function, const char* file, unsigned line, const char* message, ...)
+std::unique_ptr<Error> CreateErrorImplementation(const char* function, const char* file, unsigned line, const char* message, ...)
 {
     static const unsigned BUFFER_SIZE = 256;
 
@@ -29,7 +29,6 @@ Error* CreateErrorImplementation(const char* function, const char* file, unsigne
     vsnprintf(buffer, BUFFER_SIZE, message, argptr);
     va_end(argptr);
 
-    // @Leak
     // TODO(ted): Allocate using pool allocation.
-    return new Error{buffer, function, file, line};
+    return std::make_unique<Error>(buffer, function, file, line);
 }

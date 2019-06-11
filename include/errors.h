@@ -3,19 +3,21 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <memory>
 
 #define CreateError(message, ...) CreateErrorImplementation(__FUNCTION__, __FILE__, __LINE__, message, __VA_ARGS__)
 
-struct Error
+class Error
 {
+public:
     const char* message;
     const char* function;
     const char* file;
     const unsigned line;
+
+	Error(const char* message, const char* function, const char* file, const unsigned line) :
+		message(message), function(function), file(file), line(line) {}
 };
-
-static const Error* no_error = nullptr;
-
 
 // @Refactor
 // TODO(ted): Probably should rename this.
@@ -23,10 +25,10 @@ template <typename Type>
 struct Return
 {
     Type value;
-    const Error* error = no_error;
+    const std::unique_ptr<Error> error;
 
-    Return(Type value) : value(value) {}
-    Return(const Error* error) : error(error) {}
+    Return(Type value) : value(value), error(nullptr) {}
+    Return(std::unique_ptr<Error>&& error) : value(), error(std::move(error)) {}
 };
 
 // Check for errors and terminates the program if an error has occurred.
@@ -46,4 +48,4 @@ Type Check(const Return<Type>&& x)
 
 
 void Print(const Error& error);
-Error* CreateErrorImplementation(const char* function, const char* file, unsigned line, const char* message, ...);
+std::unique_ptr<Error> CreateErrorImplementation(const char* function, const char* file, unsigned line, const char* message, ...);

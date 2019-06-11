@@ -143,31 +143,35 @@ void Draw(ShaderProgram program, TexturedModel model)
     for (const TexturedMesh& mesh : model.meshes)
     {
         // bind appropriate textures
-        unsigned int diffuseNr  = 1;
-        unsigned int specularNr = 1;
-        unsigned int normalNr   = 1;
-        unsigned int heightNr   = 1;
+        unsigned int diffuseNr  = 0;
+        unsigned int specularNr = 0;
+        unsigned int normalNr   = 0;
+        unsigned int heightNr   = 0;
 
         for (unsigned int i = 0; i < mesh.textures.size(); i++)
         {
             GLCALL(glActiveTexture(GL_TEXTURE0 + i)); // active proper texture unit before binding
             // retrieve texture number (the N in diffuse_textureN)
-            std::string number;
+
+			char buffer[127];
+
             std::string name = mesh.textures[i].type;
             if (name == "texture_diffuse")
-                number = std::to_string(diffuseNr++);
+				snprintf(buffer, sizeof(buffer), "texture_diffuse%u", diffuseNr++);
             else if (name == "texture_specular")
-                number = std::to_string(specularNr++); // transfer unsigned int to stream
+				snprintf(buffer, sizeof(buffer), "texture_specular%u", specularNr++);
             else if (name == "texture_normal")
-                number = std::to_string(normalNr++); // transfer unsigned int to stream
+				snprintf(buffer, sizeof(buffer), "texture_normal%u", normalNr++);
             else if (name == "texture_height")
-                number = std::to_string(heightNr++); // transfer unsigned int to stream
+				snprintf(buffer, sizeof(buffer), "texture_height%u", heightNr++);
 
             // now set the sampler to the correct texture unit
-            GLCALL(glUniform1i(glGetUniformLocation(program.id, (name + number).c_str()), i));
+            GLCALL(glUniform1i(glGetUniformLocation(program.id, buffer), i));
             // and finally bind the texture
             GLCALL(glBindTexture(GL_TEXTURE_2D, mesh.textures[i].id));
         }
+		GLCALL(glUniform1ui(glGetUniformLocation(program.id, "diffuse_count"),  diffuseNr));
+		GLCALL(glUniform1ui(glGetUniformLocation(program.id, "specular_count"), specularNr));
 
         // draw mesh
         GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.mesh.ebo));
