@@ -29,6 +29,8 @@ struct Return
 
     Return(Type value) : value(value), error(nullptr) {}
     Return(std::unique_ptr<Error>&& error) : value(), error(std::move(error)) {}
+
+	Return(Return<Type>&& other) : value(other.value), error(std::move(other.error)) {}
 };
 
 // Check for errors and terminates the program if an error has occurred.
