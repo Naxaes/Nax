@@ -50,7 +50,6 @@ target_include_directories(Nax PRIVATE libraries/imgui/)
 
 # ---- Tests ----
 enable_testing()
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 set(
     TEST_SOURCES    # EXCLUDING MAIN!
