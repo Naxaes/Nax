@@ -8,6 +8,7 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
+#include <stdexcept>
 
 #include "opengl.h"
 #include "debug.h"
