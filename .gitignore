@@ -19,6 +19,7 @@ cmake-build-debug/
 *.stamp*
 *.pc*
 *.tcl*
+CMakeSettings.json
 
 # Prerequisites
 *.d
