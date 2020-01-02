@@ -28,24 +28,17 @@ layout (std140) uniform Data
     float shininess;
 };
 
-
+uniform uint diffuse_count;
+uniform sampler2D texture_diffuse0;
 uniform sampler2D texture_diffuse1;
 uniform sampler2D texture_diffuse2;
 uniform sampler2D texture_diffuse3;
 
+uniform uint specular_count;
+uniform sampler2D texture_specular0;
 uniform sampler2D texture_specular1;
 uniform sampler2D texture_specular2;
 uniform sampler2D texture_specular3;
-
-uniform sampler2D texture_normal1;
-uniform sampler2D texture_normal2;
-uniform sampler2D texture_normal3;
-
-uniform sampler2D texture_height1;
-uniform sampler2D texture_height2;
-uniform sampler2D texture_height3;
-
-
 
 out vec4 out_color;
 
@@ -60,17 +53,33 @@ void main()
     vec3 fragment_to_light_direction  = normalize(sunlight_position - fs_in.position);
     vec3 fragment_to_camera_direction = normalize(camera_position   - fs_in.position);
 
-    vec4 diffuse_color = normalize(
-        texture(texture_diffuse1, fs_in.texture_coordinate) +
-        texture(texture_diffuse2, fs_in.texture_coordinate) +
-        texture(texture_diffuse3, fs_in.texture_coordinate)
-    );
+	vec4 diffuse_color = vec4(0);
+	vec4 specular_color = vec4(0);
 
-    vec4 specular_color = normalize(
-        texture(texture_specular1, fs_in.texture_coordinate) +
-        texture(texture_specular2, fs_in.texture_coordinate) +
-        texture(texture_specular3, fs_in.texture_coordinate)
-    );
+	if ((diffuse_count + specular_count) == 0u)
+	{
+		diffuse_color  = sunlight.color;
+		specular_color = sunlight.color;
+	}
+	else
+	{
+		// Diffuse color
+		diffuse_color += texture(texture_diffuse0, fs_in.texture_coordinate) * float(diffuse_count > 0u);
+		diffuse_color += texture(texture_diffuse1, fs_in.texture_coordinate) * float(diffuse_count > 1u);
+		diffuse_color += texture(texture_diffuse2, fs_in.texture_coordinate) * float(diffuse_count > 2u);
+		diffuse_color += texture(texture_diffuse3, fs_in.texture_coordinate) * float(diffuse_count > 3u);
+		if (length(diffuse_color) > 0)
+			diffuse_color = normalize(diffuse_color);
+
+		// Specular color
+		specular_color += texture(texture_specular0, fs_in.texture_coordinate) * float(specular_count > 0u);
+		specular_color += texture(texture_specular1, fs_in.texture_coordinate) * float(specular_count > 1u);
+		specular_color += texture(texture_specular2, fs_in.texture_coordinate) * float(specular_count > 2u);
+		specular_color += texture(texture_specular3, fs_in.texture_coordinate) * float(specular_count > 3u);
+		if (length(diffuse_color) > 0)
+			diffuse_color = normalize(diffuse_color);
+	}
+
 
 
     // Ambient light.

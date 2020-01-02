@@ -7,6 +7,7 @@
 #include <glad/glad.h>
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
+
 #include "opengl.h"
 #include "debug.h"
 
